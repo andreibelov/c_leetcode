@@ -13,8 +13,8 @@
 bin/
 build/
 gdb.txt
-ft_display_file
-replace-git-emails.sh
+/reformat_phone_number/reformat_phone_number
+/merge_strings/merge_strings
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:

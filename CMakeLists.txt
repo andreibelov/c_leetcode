@@ -4,3 +4,4 @@ project(leetcode C)
 set(CMAKE_C_STANDARD 11)
 
 add_subdirectory(merge_strings)
+add_subdirectory(reformat_phone_number)
