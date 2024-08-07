@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/06 11:48:55 by abelov            #+#    #+#              #
-#    Updated: 2024/08/06 11:48:55 by abelov           ###   ########.fr        #
+#    Created: 2024/08/07 09:33:37 by abelov            #+#    #+#              #
+#    Updated: 2024/08/07 09:33:38 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-project(reformat_phone_number C)
+project(gcd_of_strings C)
 
 set(COMMON_LDFLAGS
         -fsanitize=address)
@@ -27,15 +27,11 @@ set(COMMON_CFLAGS
         -fsanitize=address
         -g3 -gdwarf-3)
 
-set(TARGET_EXE_NAME "reformat_phone_number")
+set(TARGET_EXE_NAME "gcd_of_strings")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c
-        src/ft_strnlcat.c
-        src/ft_strnpcat.c
-        src/reformatNumber.c
-        src/reformatNumber1.c
-        src/reformatNumber2.c)
+        src/gcdOfStrings.c)
 target_compile_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_CFLAGS})
 target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS})
 set_target_properties(${TARGET_EXE_NAME} PROPERTIES

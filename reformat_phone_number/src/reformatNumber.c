@@ -19,7 +19,7 @@ static char	*ft_strnlpcat(char *dest, const char *src, size_t *dst_size, size_t 
 	size_t			i;
 	const size_t	osize = *dst_size;
 	char *const		odest = dest;
-	size_t			size;
+	size_t			size;\
 
 	size = osize - 1;
 	if (!dest)
