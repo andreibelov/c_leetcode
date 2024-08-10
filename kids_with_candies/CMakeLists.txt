@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-project(gcd_of_strings C)
+project(kids_with_candies C)
 
 set(COMMON_LDFLAGS
         -fsanitize=address)
@@ -32,7 +32,7 @@ set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c
-        src/gcdOfStrings.c)
+        src/kids_with_candies.c)
 target_compile_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_CFLAGS})
 target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS})
 set_target_properties(${TARGET_EXE_NAME} PROPERTIES

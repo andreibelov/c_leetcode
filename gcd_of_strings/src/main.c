@@ -14,12 +14,12 @@
 #include <stdio.h>
 #include <string.h>
 
-char	*gcdOfStrings(char *str1, char *str2);
+char	*gcdOfStrings(const char *s1, const char *s2);
 
 int main(void)
 {
-	char	*str1;
-	char	*str2;
+	const char	*str1;
+	const char	*str2;
 	char	*gcd;
 
 	str1 = "ABCABC";

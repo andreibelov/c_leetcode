@@ -10,13 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-project(gcd_of_strings C)
+project(num_to_words C)
 
 set(COMMON_LDFLAGS
         -fsanitize=address)
 set(COMMON_CFLAGS
         -Wall -Wextra -Werror
         -Wwrite-strings
+        -Wimplicit
         -O0
         -masm=att
         -fno-exceptions
@@ -32,7 +33,7 @@ set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c
-        src/gcdOfStrings.c)
+        src/numberToWords.c)
 target_compile_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_CFLAGS})
 target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS})
 set_target_properties(${TARGET_EXE_NAME} PROPERTIES

@@ -61,7 +61,7 @@ int	gcd(int a, int b)
  * Given two strings str1 and str2, return the largest string x such
  * that x divides both str1 and str2.
  */
-char *gcdOfStrings(char *s1, char *s2)
+char	*gcdOfStrings(const char *s1, const char *s2)
 {
 	char 	*new1;
 	char 	*new2;

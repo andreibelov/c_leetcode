@@ -27,7 +27,7 @@ set(COMMON_CFLAGS
         -fsanitize=address
         -g3 -gdwarf-3)
 
-set(TARGET_EXE_NAME "reformat_phone_number")
+set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c

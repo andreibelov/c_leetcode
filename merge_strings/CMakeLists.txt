@@ -4,6 +4,7 @@ set(COMMON_LDFLAGS
         -fsanitize=address)
 set(COMMON_CFLAGS
         -Wall -Wextra -Werror
+        -Wwrite-strings
         -O0
         -masm=att
         -fno-exceptions

@@ -2,7 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-char *mergeAlternately(char *word1, char *word2){
+char *mergeAlternately(const char *word1, const char *word2)
+{
 
 	char	*new,*onew = NULL;
 	size_t	len1, len2, maxlen;
@@ -12,7 +13,8 @@ char *mergeAlternately(char *word1, char *word2){
 	len1 = strlen(word1);
 	len2 = strlen(word2);
 	maxlen = len1 >= len2 ? len1 : len2;
-	new = onew = (char *)malloc(sizeof(char) * (maxlen * 2 + 1));
+	onew = (char *)malloc(sizeof(char) * (maxlen * 2 + 1));
+	new = onew;
 	if (!new)
 		return (NULL);
 	if (len1 >= len2) {
