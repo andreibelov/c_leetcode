@@ -60,19 +60,16 @@ const char *convertToWords(int nb, const char **wstack, size_t *curr)
 
 char *numberToWords(int num)
 {
-	static char str[120] = {0};
-	int stack[20];
-	int stack_size = 0;
-	static const char *group[] = { "", "Thousand", "Million", "Billion" };
-	size_t last;
-	const char *word = NULL;
-	const char *wstack[25];
-	size_t curr = 0;
-	size_t i = 0;
+	int					stack[20];
+	int					stack_size = 0;
+	static char			str[120] = {0};
+	static const char	*group[] = { "", "Thousand", "Million", "Billion" };
+	const char			*wstack[25];
+	size_t				curr = 0;
+	size_t				i = 0;
 
-	*str = '\0';
 	if (num == 0)
-		strcpy(str, "Zero");
+		wstack[curr++] = "Zero";
 	else
 	{
 		stack[stack_size++] = num;
@@ -87,21 +84,17 @@ char *numberToWords(int num)
 			else if (num)
 			{
 				convertToWords(num, wstack, &curr);
-				wstack[curr++] = group[stack_size];
+				if (stack_size)
+					wstack[curr++] = group[stack_size];
 			}
 		}
 	}
+	*str = '\0';
+	strcat(str, wstack[i++]);
 	while (i < curr)
 	{
-		word = wstack[i++];
-		if (strlen(word) != 0)
-		{
-			strcat(str, word);
-			strcat(str, " ");
-		}
+		strcat(str, " ");
+		strcat(str, wstack[i++]);
 	}
-	last = strlen(str) - 1;
-	if (str[last] == ' ')
-		str[last] = '\0';
 	return (str);
 }

@@ -18,6 +18,7 @@ gdb.txt
 /gcd_of_strings/gcd_of_strings
 /num_to_words/num_to_words
 /kids_with_candies/kids_with_candies
+/can_place_flowers/can_place_flowers
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:

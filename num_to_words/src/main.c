@@ -48,8 +48,6 @@ int main(void)
 {
 	const char	*str;
 
-	printf("%d, %d, %d, %d\n", 10 % 3, 10 / 3, 9 % 3, 9 / 3);
-
 	signal(SIGSEGV, sigsegv);
 	check(!ft_strcmp(numberToWords(0), "Zero"));
 	check(!ft_strcmp(numberToWords(1000000), "One Million"));
