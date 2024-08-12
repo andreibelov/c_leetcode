@@ -12,44 +12,40 @@
 
 #include <string.h>
 
-char *strrpbrk(char *start, char *end, const char *accept)
+char *strrpbrk(const char *start, const char *end, const char *accept)
 {
 	char *found = NULL;
 
 	while(start < end)
 	{
-		found = strchr(accept, *(end--));
-		if (found) break;
+		if (strchr(accept, *end))
+		{
+			found = (char *)end;
+			break;
+		}
+		end--;
 	}
 	return (found);
 }
-
 
 /**
  * Given a string s, reverse only all the vowels in the string and return it.
  */
 char* reverseVowels(char *const str)
 {
-	char stack[1000000] = {0};
-	int stackSize = 0;
-	char *s = str;
-	char *left = strpbrk(s, "aeiouAEIOU");
-//	char *right = strrpbrk(s, s + strlen(s) - 1,"aeiouAEIOU");
+	char c;
+	char	*s = str;
+	size_t	len = strlen(s);
+	char	*left = strpbrk(s, "aeiouAEIOU");
+	char	*right = strrpbrk(s, s + len - 1, "aeiouAEIOU");
 
-	while(*s)
+	while((left && right) && (left < right))
 	{
-		left = strpbrk(s, "aeiouAEIOU");
-		if (!left) break ;
-		stack[stackSize++] = *left;
-		s = ++left;
-	}
-	s = str;
-	while(*s && stackSize)
-	{
-		left = strpbrk(s, "aeiouAEIOU");
-		if (!left) break ;
-		*left = stack[--stackSize];
-		s = ++left;
+		c = *left;
+		*left = *right;
+		*right = c;
+		right = strrpbrk(++left, --right, "aeiouAEIOU");
+		left = strpbrk(left, "aeiouAEIOU");
 	}
 	return (str);
 }
