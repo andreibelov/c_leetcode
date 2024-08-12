@@ -5,18 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/06 11:48:55 by abelov            #+#    #+#              #
-#    Updated: 2024/08/06 11:48:55 by abelov           ###   ########.fr        #
+#    Created: 2024/08/12 11:39:23 by abelov            #+#    #+#              #
+#    Updated: 2024/08/12 11:39:23 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-project(can_place_flowers C)
+
+project(reverse_vowels C)
 
 set(COMMON_LDFLAGS
         -fsanitize=address)
 set(COMMON_CFLAGS
         -Wall -Wextra -Werror
         -Wwrite-strings
+        -Wimplicit
         -O0
         -masm=att
         -fno-exceptions
@@ -32,7 +34,7 @@ set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c
-        src/canPlaceFlowers.c)
+        src/reverseVowels.c)
 target_compile_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_CFLAGS})
 target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS})
 set_target_properties(${TARGET_EXE_NAME} PROPERTIES

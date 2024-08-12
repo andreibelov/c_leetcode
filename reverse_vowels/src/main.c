@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/07 11:59:49 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/07 11:59:49 by abelov           ###   ########.fr       */
+/*   Created: 2024/08/12 11:39:10 by abelov            #+#    #+#             */
+/*   Updated: 2024/08/12 11:39:10 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,16 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return strcmp(s1,s2);
 }
 
-char	*numberToWords(int num);
+char* reverseVowels(char* s);
 
-int main(void)
+/**
+ *
+ */
+int	main(void)
 {
-	const char	*str;
-
 	signal(SIGSEGV, sigsegv);
-	check(!ft_strcmp(numberToWords(0), "Zero"));
-	check(!ft_strcmp(numberToWords(1000000), "One Million"));
-	check(!ft_strcmp(numberToWords(1000), "One Thousand"));
-	str = "One Hundred Twenty Three";
-	check(!ft_strcmp(numberToWords(123), str));
-	str = "Twelve Thousand Three Hundred Forty Five";
-	check(!ft_strcmp(numberToWords(12345), str));
-	str = "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven";
-	check(!ft_strcmp(numberToWords(1234567), str));
-	str = "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One";
-	check(!ft_strcmp(numberToWords(1234567891), str));
-	check(!ft_strcmp(numberToWords(10), "Ten"));
-	check(!ft_strcmp(numberToWords(7), "Seven"));
-	check(!ft_strcmp(numberToWords(17), "Seventeen"));
-	check(!ft_strcmp(numberToWords(20), "Twenty"));
+	check(!ft_strcmp(reverseVowels(strdup("hello")), "holle"));
+	check(!ft_strcmp(reverseVowels(strdup("leetcode")), "leotcede"));
 
 	return (EXIT_SUCCESS);
 }
