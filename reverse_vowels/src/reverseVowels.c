@@ -42,11 +42,10 @@ char* reverseVowels(char *const str)
 	while((left && right) && (left < right))
 	{
 		c = *left;
-		*left = *right;
-		*right = c;
-		right = strrpbrk(++left, --right, "aeiouAEIOU");
+		*left++ = *right;
+		*right-- = c;
+		right = strrpbrk(left, right, "aeiouAEIOU");
 		left = strpbrk(left, "aeiouAEIOU");
 	}
 	return (str);
 }
-

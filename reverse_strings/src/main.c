@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 11:39:10 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/12 11:39:10 by abelov           ###   ########.fr       */
+/*   Created: 2024/08/12 22:58:15 by abelov            #+#    #+#             */
+/*   Updated: 2024/08/12 22:58:15 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return strcmp(s1,s2);
 }
 
-char* reverseVowels(char* s);
+char	*reverseWords(char *s);
 
 /**
  *
@@ -50,8 +50,9 @@ char* reverseVowels(char* s);
 int	main(void)
 {
 	signal(SIGSEGV, sigsegv);
-	check(!ft_strcmp(reverseVowels(__builtin_strdup("hello")), "holle"));
-	check(!ft_strcmp(reverseVowels(strdup("leetcode")), "leotcede"));
+	check(!ft_strcmp(reverseWords(strdup("the sky is blue")), "blue is sky the"));
+	check(!ft_strcmp(reverseWords(strdup("  hello world  ")), "world hello"));
+	check(!ft_strcmp(reverseWords(strdup("a good   example")), "example good a"));
 
 	return (EXIT_SUCCESS);
 }

@@ -5,29 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/12 11:39:23 by abelov            #+#    #+#              #
-#    Updated: 2024/08/12 11:39:23 by abelov           ###   ########.fr        #
+#    Created: 2024/08/07 09:33:37 by abelov            #+#    #+#              #
+#    Updated: 2024/08/07 09:33:38 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-project(reverse_vowels C)
+project(reverse_strings C)
 
 set(COMMON_LDFLAGS
-#        -fsanitize=address
-        -fno-plt -fno-pie -no-pie -fno-pic
-        -static -flto -Wl,-z,relro,-z,now)
+        -fsanitize=address)
 set(COMMON_CFLAGS
         -Wall -Wextra -Werror
         -Wwrite-strings
         -Wimplicit
         -O0
-        -g3 -gdwarf-3
-        -nostdlib -lc
-        -fno-builtin-strlen
-        -foptimize-strlen
-        -mstackrealign
-        -static -flto -Wl,-z,relro,-z,now
         -masm=att
         -fno-exceptions
         -ffunction-sections
@@ -35,15 +26,14 @@ set(COMMON_CFLAGS
         -fomit-frame-pointer
         -fdwarf2-cfi-asm
         -fasynchronous-unwind-tables
-        -fcf-protection=none -mmanual-endbr
-#        -fsanitize=address
-)
+        -fsanitize=address
+        -g3 -gdwarf-3)
 
 set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c
-        src/reverseVowels.c)
+        src/reverseWords.c)
 target_compile_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_CFLAGS})
 target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS})
 set_target_properties(${TARGET_EXE_NAME} PROPERTIES
