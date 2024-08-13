@@ -21,6 +21,7 @@ gdb.txt
 /can_place_flowers/can_place_flowers
 /reverse_vowels/reverse_vowels
 /reverse_strings/reverse_strings
+/product_except_self/product_except_self
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
