@@ -83,8 +83,8 @@ int ft_do_test(struct s_input *input)
 
 int main(void)
 {
-	int i;
-	struct s_input inputs[] = {
+	int				i;
+	struct s_input	inputs[] = {
 		{
 			.nums = (int[]) {1, 2, 3, 4, 5},
 			.numsSize = 5,

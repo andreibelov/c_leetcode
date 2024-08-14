@@ -23,25 +23,23 @@ bool increasingTriplet(int* nums, int numsSize)
 {
 	bool 	result = false;
 	int		idx;
+	int		curr;
 	int 	i = INT_MAX;
 	int 	j = INT_MAX;
 
 	idx = -1;
 	while (++idx < numsSize)
 	{
-//		fprintf(stdout, "i = %d, j = %d, curr = %d\n", i, j, nums[idx]);
-//		fflush(stdout);
-		if (nums[idx] < i)
-			i = nums[idx];
-		else if (nums[idx] < j && nums[idx] > i)
-			j = nums[idx];
-		else if (nums[idx] > j && nums[idx] > i)
+		fprintf(stdout, "i = %d, j = %d, curr = %d\n", i, j, nums[idx]);
+		fflush(stdout);
+		curr = nums[idx];
+		if (curr <= i) i = curr;
+		else if (curr <= j) j = curr;
+		else
 		{
 			result = true;
 			break ;
 		}
-		else
-			continue;
 	}
 	return (result);
 }
