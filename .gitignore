@@ -24,6 +24,7 @@ gdb.txt
 /product_except_self/product_except_self
 /increasing_triplet_subsequence/increasing_triplet
 /string_compression/string_compression
+/move_zeroes/move_zeroes
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
