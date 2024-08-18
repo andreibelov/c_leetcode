@@ -5,57 +5,60 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 14:13:16 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/16 14:13:17 by abelov           ###   ########.fr       */
+/*   Created: 2024/08/18 14:25:20 by abelov            #+#    #+#             */
+/*   Updated: 2024/08/18 14:25:21 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "leetcode75.h"
 
-int maxArea(int *height, int heightSize);
+int maxVowels(const char *s, int k);
 
 struct s_input
 {
-	int *nums;
-	int numsSize;
-	int expected;
+	const char	*str;
+	const int	k;
+	const int	expected;
 };
 
-
-int ft_do_test(struct s_input *input)
+int ft_do_test(const struct s_input *const input)
 {
-	int result;
-	int check_val;
-	ft_print_int_tab(input->nums, input->numsSize, NULL);
+	int	result;
+	int	check_val;
 
-	result = maxArea(input->nums,
-					 input->numsSize);
-	check_val = (input->expected == result);
-	if (!check_val)
+	printf("%s\n", input->str);
+	result = maxVowels(input->str, input->k);
+	check_val = (result != input->expected);
+	if (check_val)
 		printf("got \"%d\" whilst \"%d\" was to be expected\n",
 			   result, input->expected);
-	check(check_val);
+	check(!check_val);
 	return (0);
 }
 
 int main(void)
 {
-	int i;
-	struct s_input inputs[] = {
+	int				i;
+	struct s_input	inputs[] = {
 		{
-			.numsSize = 9,
-			.nums = (int[9]) {1, 8, 6,  2, 5, 4,  8, 3, 7},
-			.expected = 49
+			.k = 3,
+			.str = "abciiidef",
+			.expected = 3
 		},
 		{
-			.numsSize = 2,
-			.nums = (int[2]) {1, 1},
-			.expected = 1
-		},
-		{
-			.numsSize = 3,
-			.nums = (int[3]) {1,2,1},
+			.k = 2,
+			.str = "aeiou",
 			.expected = 2
+		},
+		{
+			.k = 3,
+			.str = "leetcode",
+			.expected = 2
+		},
+		{
+			.k = 4,
+			.str = "rhythms",
+			.expected = 0
 		}
 	};
 

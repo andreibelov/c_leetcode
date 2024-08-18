@@ -11,6 +11,9 @@
 # **************************************************************************** #
 
 cmake_minimum_required(VERSION 3.27)
+
+include_directories(include)
+
 project(leetcode C)
 
 set(CMAKE_C_STANDARD 11)
@@ -30,3 +33,4 @@ add_subdirectory(move_zeroes)
 add_subdirectory(container_with_most_water)
 add_subdirectory(max_number_of_k_sum_pairs)
 add_subdirectory(maximum_average_subarray)
+add_subdirectory(maximum_vowels)

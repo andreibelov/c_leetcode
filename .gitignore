@@ -28,6 +28,7 @@ gdb.txt
 /container_with_most_water/max_area
 /max_number_of_k_sum_pairs/max_operations
 /maximum_average_subarray/maximum_average_subarray
+/maximum_vowels/max_vowels
 
 
 # From https://stackoverflow.com/questions/15606955/:

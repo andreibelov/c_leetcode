@@ -10,48 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
-#include <signal.h>
+#include "leetcode75.h"
 
-# define FT_RED   "\033[0;31m"
-# define FT_GREEN "\033[0;32m"
-# define FT_CYAN  "\033[36m"
-# define FT_RESET "\e[0m"
+char* reverseVowels(char *s);
 
-void	sigsegv(int signal)
+struct s_input
 {
-	(void)signal;
-	printf("> "FT_CYAN".SIGSEGV"FT_RESET"\n");
-	exit(EXIT_SUCCESS);
+	const char	*str;
+	const char	*expected;
+};
+
+int ft_do_test(struct s_input *input)
+{
+	char	*result;
+	int		check_val;
+
+	result = reverseVowels(strcpy(alloca(strlen(input->str) + 1), input->str));
+	check_val = strcmp(input->expected, result);
+	if (check_val)
+		printf("got \"%s\" whilst \"%s\" was to be expected\n",
+			   result, input->expected);
+	check(!check_val);
+	return (0);
 }
 
-void	check(bool succes)
-{
-	if (succes)
-		printf("> "FT_GREEN".OK "FT_RESET"\n");
-	else
-		printf("> "FT_RED".KO "FT_RESET"\n");
-}
 
-int	ft_strcmp(const char *s1, const char *s2)
+int main(void)
 {
-	printf("res: \"%s\"; exp: \"%s\"\n", s1, s2);
-	return strcmp(s1,s2);
-}
+	int				i;
+	struct s_input	inputs[] = {
+		{
+			.str = "hello",
+			.expected = "holle"
+		},
+		{
+			.str = "leetcode",
+			.expected = "leotcede"
+		}
+	};
 
-char* reverseVowels(char* s);
-
-/**
- *
- */
-int	main(void)
-{
 	signal(SIGSEGV, sigsegv);
-	check(!ft_strcmp(reverseVowels(__builtin_strdup("hello")), "holle"));
-	check(!ft_strcmp(reverseVowels(strdup("leetcode")), "leotcede"));
-
+	i = -1;
+	while (++i < (int) (sizeof(inputs) / sizeof(inputs[0])))
+		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }

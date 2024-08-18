@@ -1,54 +1,66 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/18 14:08:35 by abelov            #+#    #+#             */
+/*   Updated: 2024/08/18 14:08:35 by abelov           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *mergeAlternately(const char *word1, const char *word2)
+#include "leetcode75.h"
+
+char *mergeAlternately(const char *word1, const char *word2);
+
+struct s_input
 {
+	const char	*str1;
+	const char	*str2;
+	const char	*expected;
+};
 
-	char	*new,*onew = NULL;
-	size_t	len1, len2, maxlen;
+int ft_do_test(struct s_input *input)
+{
+	char	*result;
+	int		check_val;
 
-	if (!word1 || !word2)
-		return (NULL);
-	len1 = strlen(word1);
-	len2 = strlen(word2);
-	maxlen = len1 >= len2 ? len1 : len2;
-	onew = (char *)malloc(sizeof(char) * (maxlen * 2 + 1));
-	new = onew;
-	if (!new)
-		return (NULL);
-	if (len1 >= len2) {
-		while (*word2) {
-			*new++ = *word1++;
-			*new++ = *word2++;
-		}
-		while (*word1)
-			*new++ = *word1++;
-	}
-	else {
-		while (*word1) {
-			*new++ = *word1++;
-			*new++ = *word2++;
-		}
-		while (*word2)
-			*new++ = *word2++;
-	}
-	*new = '\0';
-	return (onew);
+	result = mergeAlternately(input->str1, input->str2);
+	check_val = strcmp(input->expected, result);
+	if (check_val)
+		printf("got \"%s\" whilst \"%s\" was to be expected\n",
+			   result, input->expected);
+	check(!check_val);
+	free(result);
+	return (0);
 }
 
-/**
- * You are given two strings word1 and word2.
- * Merge the strings by adding letters in alternating order,
- * starting with word1. If a string is longer than the other,
- * append the additional letters onto the end of the merged string.
- */
-int main(void) {
 
-	char *new;
-	printf("Hello, World!\n");
-	new = mergeAlternately("abc", "pqr");
-	printf("%s\n", new);
-	free(new);
+int main(void)
+{
+	int				i;
+	struct s_input	inputs[] = {
+		{
+			.str1 = "abc",
+			.str2 = "pqr",
+			.expected = "apbqcr"
+		},
+		{
+			.str1 = "ab",
+			.str2 = "pqrs",
+			.expected = "apbqrs"
+		},
+		{
+			.str1 = "abcd",
+			.str2 = "pq",
+			.expected = "apbqcd"
+		}
+	};
+
+	signal(SIGSEGV, sigsegv);
+	i = -1;
+	while (++i < (int) (sizeof(inputs) / sizeof(inputs[0])))
+		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }
