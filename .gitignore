@@ -26,6 +26,9 @@ gdb.txt
 /string_compression/string_compression
 /move_zeroes/move_zeroes
 /container_with_most_water/max_area
+/max_number_of_k_sum_pairs/max_operations
+/maximum_average_subarray/maximum_average_subarray
+
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
