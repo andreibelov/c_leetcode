@@ -29,6 +29,7 @@ gdb.txt
 /max_number_of_k_sum_pairs/max_operations
 /maximum_average_subarray/maximum_average_subarray
 /maximum_vowels/max_vowels
+/max_consecutive_ones/longest_ones
 
 
 # From https://stackoverflow.com/questions/15606955/:
