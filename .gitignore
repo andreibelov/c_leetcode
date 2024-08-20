@@ -31,6 +31,8 @@ gdb.txt
 /maximum_vowels/max_vowels
 /max_consecutive_ones/longest_ones
 /longest_subarray/longest_subarray
+/highest_altitude/highest_altitude
+/find_pivot_index/find_pivot_index
 
 
 # From https://stackoverflow.com/questions/15606955/:
