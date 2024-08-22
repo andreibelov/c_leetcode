@@ -34,6 +34,7 @@ gdb.txt
 /highest_altitude/highest_altitude
 /find_pivot_index/find_pivot_index
 /find_the_difference/find_the_difference
+/unique_occurrences/unique_occurrences
 
 
 # From https://stackoverflow.com/questions/15606955/:
