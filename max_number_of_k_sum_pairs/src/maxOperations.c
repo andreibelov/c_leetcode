@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-int compare2(const int *a, const int *b)
+int intcmp(const int *a, const int *b)
 {
 	return (*a > *b) - (*a < *b);
 }
@@ -25,7 +25,7 @@ int maxOperations(int *nums, int numsSize, int k)
 	int left_idx = 0;
 	int right_idx = numsSize - 1;
 
-	qsort(nums, numsSize, sizeof(int), (__compar_fn_t) compare2);
+	qsort(nums, numsSize, sizeof(int), (__compar_fn_t) intcmp);
 	while (left_idx < right_idx)
 	{
 		sum = nums[left_idx] + nums[right_idx];
