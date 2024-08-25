@@ -25,6 +25,8 @@ int intcmp(const int *a, const int *b)
 	return (*a > *b) - (*a < *b);
 }
 
+#define ALPHABET_SIZE ('z' - 'a' + 1)
+
 /**
  * 1657. Determine if Two Strings Are Close
  * Two strings are considered close if you can attain one from the other
@@ -38,49 +40,31 @@ int intcmp(const int *a, const int *b)
  */
 bool closeStrings(char *word1, char *word2)
 {
-	int i;
-	const int len1 = (int)strlen(word1);
-	const int len2 = (int)strlen(word2);
-	int		*hashset1 = (int *)alloca(UCHAR_MAX * sizeof(int));
-	int		*hashset2 = (int *)alloca(UCHAR_MAX * sizeof(int));
-	char	c;
-	char	set1[27] = {0};
-	int		set1Size = 0;
-	char	set2[27] = {0};
-	int		set2Size = 0;
+	int 		i;
+	const int	len1 = (int)strlen(word1);
+	const int	len2 = (int)strlen(word2);
+	int			*hashset1 = (int *)alloca(ALPHABET_SIZE * sizeof(int));
+	int			*hashset2 = (int *)alloca(ALPHABET_SIZE * sizeof(int));
 
-	if (len1 != len2)
-		return (false);
-
-	i = -1;
-	while (++i < UCHAR_MAX)
+	if (len1 == len2)
 	{
-		hashset1[i] = 0;
-		hashset2[i] = 0;
+		memset(hashset1, 0, sizeof(int) * ALPHABET_SIZE);
+		memset(hashset2, 0, sizeof(int) * ALPHABET_SIZE);
+		i = -1;
+		while (++i < len1)
+		{
+			hashset1[word1[i] - 'a']++;
+			hashset2[word2[i] - 'a']++;
+		}
+		i = -1;
+		while (++i < ALPHABET_SIZE)
+			if ((hashset1[i] == 0 && hashset2[i] != 0)
+				|| (hashset2[i] == 0 && hashset1[i] != 0))
+				return (false);
+		qsort(hashset1, ALPHABET_SIZE, sizeof(int), (__compar_fn_t) intcmp);
+		qsort(hashset2, ALPHABET_SIZE, sizeof(int), (__compar_fn_t) intcmp);
+		if (!memcmp(hashset1, hashset2, ALPHABET_SIZE * sizeof(int)))
+			return (true);
 	}
-
-	i = -1;
-	while (++i < len1)
-	{
-		c = word1[i];
-		if (hashset1[(unsigned char)c]++ == 0)
-			set1[set1Size++] = c;
-	}
-	set1[set1Size] = '\0';
-
-	i = -1;
-	while (++i < len2)
-	{
-		c = word2[i];
-		if (hashset2[(unsigned char)c]++ == 0)
-			set2[set2Size++] = c;
-	}
-	set2[set1Size] = '\0';
-	qsort(set1, set1Size, sizeof(char), (__compar_fn_t) strcmp);
-	qsort(set2, set2Size, sizeof(char), (__compar_fn_t) strcmp);
-	qsort(hashset1, UCHAR_MAX, sizeof(int), (__compar_fn_t) intcmp);
-	qsort(hashset2, UCHAR_MAX, sizeof(int), (__compar_fn_t) intcmp);
-	if (!memcmp(hashset1, hashset2, UCHAR_MAX * sizeof(int)))
-		if (strcmp(set1, set2) == 0) return (true);
 	return (false);
 }
