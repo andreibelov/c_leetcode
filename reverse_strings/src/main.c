@@ -6,53 +6,56 @@
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 22:58:15 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/12 22:58:15 by abelov           ###   ########.fr       */
+/*   Updated: 2024/08/26 21:06:05 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
-#include <signal.h>
-
-# define FT_RED   "\033[0;31m"
-# define FT_GREEN "\033[0;32m"
-# define FT_CYAN  "\033[36m"
-# define FT_RESET "\e[0m"
-
-void	sigsegv(int signal)
-{
-	(void)signal;
-	printf("> "FT_CYAN".SIGSEGV"FT_RESET"\n");
-	exit(EXIT_SUCCESS);
-}
-
-void	check(bool succes)
-{
-	if (succes)
-		printf("> "FT_GREEN".OK "FT_RESET"\n");
-	else
-		printf("> "FT_RED".KO "FT_RESET"\n");
-}
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	printf("res: \"%s\"; exp: \"%s\"\n", s1, s2);
-	return strcmp(s1,s2);
-}
+#include "leetcode75.h"
 
 char	*reverseWords(char *s);
 
-/**
- *
- */
-int	main(void)
+struct s_input
 {
-	signal(SIGSEGV, sigsegv);
-	check(!ft_strcmp(reverseWords(strdup("the sky is blue")), "blue is sky the"));
-	check(!ft_strcmp(reverseWords(strdup("  hello world  ")), "world hello"));
-	check(!ft_strcmp(reverseWords(strdup("a good   example")), "example good a"));
+	const char	*str;
+	const char	*expected;
+};
 
+int ft_do_test(struct s_input *input)
+{
+	char	*result;
+	int		check_val;
+
+	result = reverseWords(strcpy(alloca(strlen(input->str) + 1), input->str));
+	check_val = strcmp(input->expected, result);
+	if (check_val)
+		printf("got \"%s\" whilst \"%s\" was to be expected\n",
+			   result, input->expected);
+	check(!check_val);
+	return (0);
+}
+
+
+int main(void)
+{
+	int				i;
+	struct s_input	inputs[] = {
+		{
+			.str = "the sky is blue",
+			.expected = "blue is sky the"
+		},
+		{
+			.str = "  hello world  ",
+			.expected = "world hello"
+		},
+		{
+			.str = "a good   example",
+			.expected = "example good a"
+		}
+	};
+
+	signal(SIGSEGV, sigsegv);
+	i = -1;
+	while (++i < (int) (sizeof(inputs) / sizeof(inputs[0])))
+		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }

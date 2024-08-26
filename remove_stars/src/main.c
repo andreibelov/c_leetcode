@@ -5,18 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 11:57:33 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/06 11:57:33 by abelov           ###   ########.fr       */
+/*   Created: 2024/08/26 20:47:45 by abelov            #+#    #+#             */
+/*   Updated: 2024/08/26 20:47:47 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "leetcode75.h"
 
-char *reformatNumber(char *s);
+char *removeStars(char *s);
 
 struct s_input
 {
@@ -29,7 +25,7 @@ int ft_do_test(struct s_input *input)
 	char	*result;
 	int		check_val;
 
-	result = reformatNumber(strcpy(alloca(strlen(input->str) + 1), input->str));
+	result = removeStars(strcpy(alloca(strlen(input->str) + 1), input->str));
 	check_val = strcmp(input->expected, result);
 	if (check_val)
 		printf("got \"%s\" whilst \"%s\" was to be expected\n",
@@ -44,16 +40,12 @@ int main(void)
 	int				i;
 	struct s_input	inputs[] = {
 		{
-			.str = "1-23-45 6",
-			.expected = "123-456"
+			.str = "leet**cod*e",
+			.expected = "lecoe"
 		},
 		{
-			.str = "123 4-567",
-			.expected = "123-45-67"
-		},
-		{
-			.str = "123 4-5678",
-			.expected = "123-456-78"
+			.str = "erase*****",
+			.expected = ""
 		}
 	};
 
