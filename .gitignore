@@ -39,6 +39,7 @@ gdb.txt
 /equal_row_col_pairs/equal_row_col_pairs
 /remove_stars/remove_stars
 /asteroid_collision/asteroid_collision
+/decode_string/decode_string
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
