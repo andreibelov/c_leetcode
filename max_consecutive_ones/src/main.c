@@ -6,7 +6,7 @@
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:39:03 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/19 13:39:03 by abelov           ###   ########.fr       */
+/*   Updated: 2024/08/27 01:42:25 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ struct s_input
 	int numsSize;
 	int expected;
 };
-
 
 int ft_do_test(struct s_input *input)
 {

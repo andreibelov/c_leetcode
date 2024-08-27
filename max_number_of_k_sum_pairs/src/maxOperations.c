@@ -17,7 +17,6 @@ int intcmp(const int *a, const int *b)
 	return (*a > *b) - (*a < *b);
 }
 
-
 int maxOperations(int *nums, int numsSize, int k)
 {
 	int answer = 0;
@@ -43,5 +42,3 @@ int maxOperations(int *nums, int numsSize, int k)
 	}
 	return (answer);
 }
-
-

@@ -21,7 +21,6 @@ struct s_input
 	bool expected;
 };
 
-
 int ft_do_test(struct s_input *input)
 {
 	int result;

@@ -34,7 +34,6 @@ int ft_do_test(struct s_input *input)
 	return (0);
 }
 
-
 int main(void)
 {
 	int				i;

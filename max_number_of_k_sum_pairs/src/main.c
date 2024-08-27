@@ -6,52 +6,11 @@
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 21:50:23 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/17 21:50:23 by abelov           ###   ########.fr       */
+/*   Updated: 2024/08/27 01:42:59 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
-#include <signal.h>
-
-# define FT_RED   "\033[0;31m"
-# define FT_GREEN "\033[0;32m"
-# define FT_CYAN  "\033[36m"
-# define FT_RESET "\e[0m"
-
-void sigsegv(int signal)
-{
-	(void) signal;
-	printf("> "FT_CYAN".SIGSEGV"FT_RESET"\n");
-	exit(EXIT_SUCCESS);
-}
-
-void check(bool succes)
-{
-	if (succes)
-		printf("> "FT_GREEN".OK "FT_RESET"\n");
-	else
-		printf("> "FT_RED".KO "FT_RESET"\n");
-}
-
-void ft_print_int_tab(int tab[], size_t size, const char *eol)
-{
-	size_t pos;
-
-	pos = 0;
-	printf("[");
-	if (pos < size)
-		printf("%d", tab[pos++]);
-	while (pos < size)
-		printf(", %d", tab[pos++]);
-	printf("]");
-	if (!eol)
-		printf("\n");
-	else
-		printf("%s", eol);
-}
+#include "leetcode75.h"
 
 struct s_input
 {
@@ -78,7 +37,6 @@ int ft_do_test(struct s_input *input)
 	return (0);
 }
 
-
 int main(void)
 {
 	int i;
@@ -103,4 +61,3 @@ int main(void)
 		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }
-

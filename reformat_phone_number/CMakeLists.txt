@@ -6,26 +6,11 @@
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 11:48:55 by abelov            #+#    #+#              #
-#    Updated: 2024/08/06 11:48:55 by abelov           ###   ########.fr        #
+#    Updated: 2024/08/27 01:45:54 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 project(reformat_phone_number C)
-
-set(COMMON_LDFLAGS
-        -fsanitize=address)
-set(COMMON_CFLAGS
-        -Wall -Wextra -Werror
-        -O0
-        -masm=att
-        -fno-exceptions
-        -ffunction-sections
-        -fdata-sections
-        -fomit-frame-pointer
-        -fdwarf2-cfi-asm
-        -fasynchronous-unwind-tables
-        -fsanitize=address
-        -g3 -gdwarf-3)
 
 set(TARGET_EXE_NAME "${PROJECT_NAME}")
 

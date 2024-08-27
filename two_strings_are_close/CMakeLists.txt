@@ -6,28 +6,11 @@
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/24 23:06:01 by abelov            #+#    #+#              #
-#    Updated: 2024/08/24 23:06:02 by abelov           ###   ########.fr        #
+#    Updated: 2024/08/27 01:55:03 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 project(two_strings_are_close C)
-
-set(COMMON_LDFLAGS
-        -fsanitize=address)
-set(COMMON_CFLAGS
-        -Wall -Wextra -Werror
-        -Wwrite-strings
-        -Wimplicit
-        -O0
-        -masm=att
-        -fno-exceptions
-        -ffunction-sections
-        -fdata-sections
-        -fomit-frame-pointer
-        -fdwarf2-cfi-asm
-        -fasynchronous-unwind-tables
-        -fsanitize=address
-        -g3 -gdwarf-3)
 
 set(TARGET_EXE_NAME "${PROJECT_NAME}")
 

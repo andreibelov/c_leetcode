@@ -37,7 +37,6 @@ int ft_do_test(struct s_input *input)
 	return (0);
 }
 
-
 int main(void)
 {
 	int i;
@@ -68,5 +67,3 @@ int main(void)
 		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }
-
-

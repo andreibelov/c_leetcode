@@ -6,34 +6,11 @@
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:29:06 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/09 14:29:07 by abelov           ###   ########.fr       */
+/*   Updated: 2024/08/27 01:41:38 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <string.h>
-
-# define FT_RED   "\033[0;31m"
-# define FT_GREEN "\033[0;32m"
-# define FT_CYAN  "\033[36m"
-# define FT_RESET "\e[0m"
-
-void sigsegv(int signal)
-{
-	(void) signal;
-	printf("> "FT_CYAN".SIGSEGV"FT_RESET"\n");
-	exit(EXIT_SUCCESS);
-}
-
-void check(bool succes)
-{
-	if (succes)
-		printf("> "FT_GREEN".OK "FT_RESET"\n");
-	else
-		printf("> "FT_RED".KO "FT_RESET"\n");
-}
+#include "leetcode75.h"
 
 bool *kidsWithCandies(int *candies,
 					  int candiesSize,

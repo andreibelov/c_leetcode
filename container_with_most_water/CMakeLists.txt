@@ -6,29 +6,11 @@
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/16 14:12:42 by abelov            #+#    #+#              #
-#    Updated: 2024/08/16 14:12:43 by abelov           ###   ########.fr        #
+#    Updated: 2024/08/27 01:38:14 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 project(max_area C)
-
-set(COMMON_LDFLAGS
-        -fsanitize=address)
-set(COMMON_CFLAGS
-        -Wall -Wextra -Werror
-        -Wwrite-strings
-        -Wimplicit
-        -O0
-        -masm=att
-        -fno-exceptions
-        -ffunction-sections
-        -fdata-sections
-        -fomit-frame-pointer
-        -fdwarf2-cfi-asm
-        -fasynchronous-unwind-tables
-        -fsanitize=address
-        -g3 -gdwarf-3)
 
 set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
