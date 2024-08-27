@@ -18,6 +18,23 @@ project(leetcode C)
 
 set(CMAKE_C_STANDARD 11)
 
+set(COMMON_LDFLAGS
+        -fsanitize=address)
+set(COMMON_CFLAGS
+        -Wall -Wextra -Werror
+        -Wwrite-strings
+        -Wimplicit
+        -O0
+        -masm=att
+        -fno-exceptions
+        -ffunction-sections
+        -fdata-sections
+        -fomit-frame-pointer
+        -fdwarf2-cfi-asm
+        -fasynchronous-unwind-tables
+        -fsanitize=address
+        -g3 -gdwarf-3)
+
 add_subdirectory(merge_strings)
 add_subdirectory(reformat_phone_number)
 add_subdirectory(gcd_of_strings)
@@ -43,3 +60,4 @@ add_subdirectory(unique_occurrences)
 add_subdirectory(two_strings_are_close)
 add_subdirectory(equal_row_col_pairs)
 add_subdirectory(remove_stars)
+add_subdirectory(asteroid_collision)
