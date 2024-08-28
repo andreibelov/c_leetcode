@@ -8,9 +8,9 @@
 /*   Created: 2024/08/27 23:34:42 by abelov            #+#    #+#             */
 /*   Updated: 2024/08/27 23:34:43 by abelov           ###   ########.fr       */
 /*                                                                            */
-#include <stddef.h>
-
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 struct ListNode
 {
