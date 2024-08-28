@@ -75,6 +75,11 @@ int ft_do_test(struct s_input *input)
 		}
 		check(check_val);
 	}
+	i = -1;
+	while (++i < 2)
+		free(result[i]);
+	free(result);
+	free(resultColumnSizes);
 	return (0);
 }
 

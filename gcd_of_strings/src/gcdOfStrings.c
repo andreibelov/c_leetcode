@@ -51,6 +51,7 @@ int	gcd(int a, int b)
  */
 char	*gcdOfStrings(const char *s1, const char *s2)
 {
+	int 	cmp;
 	char 	*new1;
 	char 	*new2;
 	size_t	gcdLength;
@@ -58,10 +59,11 @@ char	*gcdOfStrings(const char *s1, const char *s2)
 	new1 = ft_strjoin(strdup(s1), s2);
 	new2 = ft_strjoin(strdup(s2), s1);
 
-	if (strcmp(new1, new2) != 0)
-		return (strdup(""));
+	cmp = strcmp(new1, new2);
 	free(new1);
 	free(new2);
+	if (cmp != 0)
+		return (strdup(""));
 	gcdLength = gcd((int)strlen(s1), (int)strlen(s2));
 	return (strndup(s1, gcdLength));
 }

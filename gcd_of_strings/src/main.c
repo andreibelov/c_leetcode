@@ -32,6 +32,7 @@ int ft_do_test(struct s_input *input)
 		printf("got \"%s\" whilst \"%s\" was to be expected\n",
 			   result, input->expected);
 	check(!check_val);
+	free(result);
 	return (0);
 }
 

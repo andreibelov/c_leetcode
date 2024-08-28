@@ -40,6 +40,7 @@ gdb.txt
 /remove_stars/remove_stars
 /asteroid_collision/asteroid_collision
 /decode_string/decode_string
+/reverse_linked_list/reverse_linked_list
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
