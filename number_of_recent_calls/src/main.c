@@ -12,17 +12,7 @@
 
 #include "leetcode75.h"
 
-typedef struct Node
-{
-	int time;
-	struct Node *next;
-} Node;
-
-typedef struct
-{
-	Node *front;
-	Node *rear;
-} RecentCounter;
+typedef struct rc RecentCounter;
 
 /**
  * 933. Number of Recent Calls
@@ -101,4 +91,3 @@ int main(void)
 		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }
-

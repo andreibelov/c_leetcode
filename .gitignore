@@ -42,6 +42,7 @@ gdb.txt
 /decode_string/decode_string
 /reverse_linked_list/reverse_linked_list
 /number_of_recent_calls/number_of_recent_calls
+/dota2_senate/dota2_senate
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:

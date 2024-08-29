@@ -43,8 +43,11 @@ RecentCounter *recentCounterCreate()
 
 int recentCounterPing(RecentCounter *counter, int t)
 {
-	while (t - (counter->time)[counter->head] > 3000 && counter->head < counter->tail)
+	while (t - (counter->time)[counter->head] > 3000)
+	{
+		if (counter->head >= counter->tail) break;
 		(counter->head)++;
+	}
 	(counter->time)[(counter->tail)++] = t;
 	return (counter->tail - counter->head);
 }
@@ -61,7 +64,6 @@ typedef struct Node
 	int time;
 	struct Node *next;
 } Node;
-
 
 struct rc
 {
