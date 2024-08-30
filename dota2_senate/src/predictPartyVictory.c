@@ -53,24 +53,27 @@ char *predictPartyVictory(const char *senate);
 
 typedef struct
 {
-	int	queue[MAX_N];
 	int	front;
 	int	rear;
+	int	queue[MAX_N];
 } Queue;
-
-void enqueue(Queue *q, int val)
-{
-	q->queue[q->rear++] = val;
-}
-
-int dequeue(Queue *q)
-{
-	return q->queue[q->front++];
-}
 
 int is_empty(Queue *q)
 {
 	return q->front == q->rear;
+}
+
+void enqueue(Queue *q, int val)
+{
+	q->queue[q->rear++] = val;
+	q->rear %= MAX_N;
+}
+
+int dequeue(Queue *q)
+{
+	int retval = q->queue[q->front++];
+	q->front %= MAX_N;
+	return (retval);
 }
 
 char *predictPartyVictory(const char *senate)

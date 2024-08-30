@@ -24,32 +24,69 @@ typedef struct rc RecentCounter;
 int recentCounterPing(RecentCounter *counter, int t);
 
 #if !defined USE_DINAMIC
+
+#define MAX_N 10001
+
 typedef struct rc RecentCounter;
 // Use a linked list queue (pop elements once it exceeds 3000 in time difference)
 struct rc
 {
-	int head;
-	int tail;
-	int time[10001];
+	int front;
+	int rear;
+	int queue[MAX_N];
 };
+
+int peek(RecentCounter *q)
+{
+	return q->queue[q->front];
+}
+
+int is_full(RecentCounter *q)
+{
+	return ((q->rear + 1) % MAX_N == q->front);
+}
+
+int is_empty(RecentCounter *q)
+{
+	return q->front == q->rear;
+}
+
+int queue_size(RecentCounter *q)
+{
+	return q->rear - q->front;
+}
+
+void enqueue(RecentCounter *q, int val)
+{
+	if(is_full(q)) return;
+	q->queue[q->rear++] = val;
+	q->rear %= MAX_N;
+}
+
+int dequeue(RecentCounter *q)
+{
+	int retval = -1;
+
+	if(is_empty(q)) return (retval);
+	retval = q->queue[q->front++];
+	q->front %= MAX_N;
+	return (retval);
+}
 
 RecentCounter *recentCounterCreate()
 {
 	RecentCounter *counter = malloc(sizeof(RecentCounter));
-	counter->head = 0;
-	counter->tail = 1;
+	counter->front = 0;
+	counter->rear = 0;
 	return (counter);
 }
 
 int recentCounterPing(RecentCounter *counter, int t)
 {
-	while (t - (counter->time)[counter->head] > 3000)
-	{
-		if (counter->head >= counter->tail) break;
-		(counter->head)++;
-	}
-	(counter->time)[(counter->tail)++] = t;
-	return (counter->tail - counter->head);
+	while (!is_empty(counter) && t - peek(counter) > 3000)
+		dequeue(counter);
+	enqueue(counter, t);
+	return (queue_size(counter));
 }
 
 void recentCounterFree(RecentCounter *counter)
