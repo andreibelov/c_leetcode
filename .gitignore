@@ -47,6 +47,7 @@ gdb.txt
 /odd_even_linked_list/odd_even_linked_list
 /maximum_twin_sum/maximum_twin_sum
 /maxdepth_of_btree/maxdepth_of_btree
+/leaf_similar_trees/leaf_similar_trees
 
 
 # From https://stackoverflow.com/questions/15606955/:
