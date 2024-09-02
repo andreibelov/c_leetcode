@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include <stdbool.h>
-#include <string.h>
+
 
 typedef struct TreeNode TreeNode;
 
@@ -34,6 +35,54 @@ struct TreeNode
  */
 unsigned char leafSimilar(struct TreeNode *root1, struct TreeNode *root2);
 
+#if !defined USE_TWO_STACKS
+
+#define MAX_STACK_SIZE 10000
+
+unsigned char leafSimilar(struct TreeNode *root1, struct TreeNode *root2)
+{
+	int sp = 0;
+	int stack[MAX_STACK_SIZE];
+
+	int msp = 0;
+	int sp2 = 0;
+	struct TreeNode *main_stack[MAX_STACK_SIZE];
+	struct TreeNode *node;
+
+	if (!root1 || !root2) return false;
+
+	main_stack[msp++] = root1;
+	while(msp)
+	{
+		node = main_stack[--msp];
+		if (!node->left && !node->right) stack[sp++] = node->val;
+		else
+		{
+			if (node->right) main_stack[msp++] = node->right;
+			if (node->left) main_stack[msp++] = node->left;
+		}
+	}
+
+	main_stack[msp++] = root2;
+	while(msp)
+	{
+		node = main_stack[--msp];
+		if (!node->left && !node->right)
+		{
+			if (sp2 > sp || stack[sp2++] != node->val)
+				return false;
+		}
+		else
+		{
+			if (node->right) main_stack[msp++] = node->right;
+			if (node->left) main_stack[msp++] = node->left;
+		}
+	}
+
+	return (sp2 == sp ? true : false);
+}
+
+#else
 
 #define MAX_STACK_SIZE 10000
 
@@ -76,3 +125,4 @@ unsigned char leafSimilar(struct TreeNode *root1, struct TreeNode *root2)
 
 	return (sp1 == sp2 ? !memcmp(stack1, stack2, sp1 * sizeof(int))  : false);
 }
+#endif
