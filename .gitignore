@@ -48,6 +48,7 @@ gdb.txt
 /maximum_twin_sum/maximum_twin_sum
 /maxdepth_of_btree/maxdepth_of_btree
 /leaf_similar_trees/leaf_similar_trees
+/good_nodes_in_btree/good_nodes_in_btree
 
 
 # From https://stackoverflow.com/questions/15606955/:
