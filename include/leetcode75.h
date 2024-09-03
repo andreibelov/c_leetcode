@@ -56,4 +56,34 @@ void ft_print_int_tab(int tab[], size_t size, const char *eol)
 		printf("%s", eol);
 }
 
+void ft_print_int_tab_null(int tab[], size_t size, int nil, const char *eol)
+{
+	size_t pos;
+	int val;
+
+	pos = 0;
+	printf("[");
+	if (pos < size)
+	{
+		val = tab[pos++];
+		if (val == nil)
+			printf("%s", "null");
+		else
+			printf("%d", val);
+	}
+	while (pos < size)
+	{
+		val = tab[pos++];
+		if (val == nil)
+			printf(", %s", "null");
+		else
+			printf(", %d", val);
+	}
+	printf("]");
+	if (!eol)
+		printf("\n");
+	else
+		printf("%s", eol);
+}
+
 #endif //LEETCODE75_H

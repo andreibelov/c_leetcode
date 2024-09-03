@@ -49,6 +49,7 @@ gdb.txt
 /maxdepth_of_btree/maxdepth_of_btree
 /leaf_similar_trees/leaf_similar_trees
 /good_nodes_in_btree/good_nodes_in_btree
+/path_sum_iii/path_sum_iii
 
 
 # From https://stackoverflow.com/questions/15606955/:

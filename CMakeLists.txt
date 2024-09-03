@@ -19,7 +19,11 @@ project(leetcode C)
 set(CMAKE_C_STANDARD 11)
 
 set(COMMON_LDFLAGS
-        -fsanitize=address)
+        -fsanitize=address
+        -fsanitize=undefined
+        -fno-sanitize-recover
+        -fsanitize=float-divide-by-zero
+        -fsanitize=float-cast-overflow)
 set(COMMON_CFLAGS
         -Wall -Wextra -Werror
         -Wwrite-strings
@@ -31,9 +35,16 @@ set(COMMON_CFLAGS
         -fdata-sections
         -fomit-frame-pointer
         -fdwarf2-cfi-asm
+        -fcf-protection=none
+        -mmanual-endbr
+        -g3 -gdwarf-3
         -fasynchronous-unwind-tables
         -fsanitize=address
-        -g3 -gdwarf-3)
+        -fsanitize=undefined
+        -fno-sanitize-recover
+        -fsanitize=float-divide-by-zero
+        -fsanitize=float-cast-overflow
+)
 
 add_subdirectory(merge_strings)
 add_subdirectory(reformat_phone_number)
@@ -71,3 +82,4 @@ add_subdirectory(maximum_twin_sum)
 add_subdirectory(maxdepth_of_btree)
 add_subdirectory(leaf_similar_trees)
 add_subdirectory(good_nodes_in_btree)
+add_subdirectory(path_sum_iii)
