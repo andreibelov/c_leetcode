@@ -14,15 +14,6 @@
 
 #define MAX_STACK_SIZE 10000
 
-typedef struct TreeNode TreeNode;
-
-struct TreeNode
-{
-	int		 val;
-	TreeNode *left;
-	TreeNode *right;
-};
-
 /**
  * 1448. Count Good Nodes in Binary Tree
  *
@@ -31,11 +22,6 @@ struct TreeNode
  * 	Each node's value is between [-10^4, 10^4].
  */
 int goodNodes(struct TreeNode* root);
-
-enum
-{
-	null = -10001
-};
 
 struct s_input
 {
@@ -71,15 +57,6 @@ void free_tree(TreeNode *root)
 	}
 }
 
-TreeNode *new_node(int data)
-{
-	TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
-	node->val = data;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
-}
-
 TreeNode *getTree(const int *arr, int size)
 {
 	TreeNode *root;
@@ -106,13 +83,13 @@ TreeNode *getTree(const int *arr, int size)
 		left_index = 2 * el.idx + 1;
 		right_index = 2 * el.idx + 2;
 
-		if (left_index < size && arr[left_index] != -1)
+		if (left_index < size && arr[left_index] != null)
 		{
 			node->left = new_node(arr[left_index]);
 			stack[sp++] = (stack_el) {node->left, left_index};
 		}
 
-		if (right_index < size && arr[right_index] != -1)
+		if (right_index < size && arr[right_index] != null)
 		{
 			node->right = new_node(arr[right_index]);
 			stack[sp++] = (stack_el) {node->right, right_index};
@@ -127,9 +104,8 @@ static int ft_do_test(struct s_input *input)
 	int result;
 	int check_val;
 
-	ft_print_int_tab(input->arr, input->arrSize, NULL);
-
-	root = getTree(input->arr, input->arrSize);
+	ft_print_int_tab_null(input->arr, input->arrSize, null, NULL);
+	root = deserialize_level_order(input->arr, input->arrSize);
 
 	result = goodNodes(root);
 	check_val = (result == input->expected);

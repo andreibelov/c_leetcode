@@ -5,27 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 12:37:01 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/31 12:37:02 by abelov           ###   ########.fr       */
+/*   Created: 2024/09/04 00:02:53 by abelov            #+#    #+#             */
+/*   Updated: 2024/09/04 00:02:53 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "leetcode75.h"
 
-#define MAX_STACK_SIZE 10000
+typedef struct TreeNode TreeNode;
 
 /**
- * 104. Maximum Depth of Binary Tree
- * Constraints:
- * 	The number of nodes in the tree is in the range [0, 104].
- * 	-100 <= Node.val <= 100
+ * 1372. Longest ZigZag Path in a Binary Tree
+ *
+ * Zigzag length is defined as the number of nodes visited - 1.
+ * (A single node has a length of 0).
+ *
+ * Return the longest ZigZag path contained in that tree.
  */
-int maxDepth(struct TreeNode *root);
+int longestZigZag(struct TreeNode *root);
 
 struct s_input
 {
 	int *arr;
 	int arrSize;
+	int targetSum;
 	int expected;
 };
 
@@ -34,6 +37,8 @@ typedef struct s_stack_el
 	TreeNode *node;
 	int idx;
 } stack_el;
+
+void print_tree(struct TreeNode *root);
 
 void free_tree(TreeNode *root)
 {
@@ -104,9 +109,10 @@ static int ft_do_test(struct s_input *input)
 	int check_val;
 
 	ft_print_int_tab_null(input->arr, input->arrSize, null, NULL);
+
 	root = deserialize_level_order(input->arr, input->arrSize);
 	print_tree(root);
-	result = maxDepth(root);
+	result = longestZigZag(root);
 	check_val = (result == input->expected);
 	if (!check_val)
 	{
@@ -114,7 +120,7 @@ static int ft_do_test(struct s_input *input)
 			   result, input->expected);
 		check_val = false;
 	}
-	check(check_val);
+	check(check_val);;
 	free_tree(root);
 	return (0);
 }
@@ -129,14 +135,19 @@ int main(void)
 			.expected = 0
 		},
 		{
-			.arrSize = 3,
-			.arr = (int[3]) {1,null,2},
-			.expected = 2
+			.arrSize = 1,
+			.arr = (int[1]) {1},
+			.expected = 0
 		},
 		{
-			.arrSize = 7,
-			.arr = (int[7]) {3,9,20,null,null,15,7},
+			.arrSize = 15,
+			.arr = (int[15]) {1, null, 1, 1, 1, null, null, 1, 1, null, 1, null, null, null, 1},
 			.expected = 3
+		},
+		{
+			.arrSize = 11,
+			.arr = (int[11]) {1, 1, 1, null, 1, null, null, 1, 1, null, 1},
+			.expected = 4
 		}
 	};
 	size_t inputs_size = (sizeof(inputs) / sizeof(inputs[0]));
@@ -145,5 +156,6 @@ int main(void)
 	i = -1;
 	while (++i < (int) inputs_size)
 		ft_do_test(&inputs[i]);
+
 	return (EXIT_SUCCESS);
 }

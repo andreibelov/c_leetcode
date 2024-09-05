@@ -1,152 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   leetcode75.h                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 14:16:30 by abelov            #+#    #+#             */
-/*   Updated: 2024/08/18 14:16:31 by abelov           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef LEETCODE75_H
-#define LEETCODE75_H
-
-#include <stdlib.h>
+#include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
-#include <signal.h>
 #include <limits.h>
-
-enum
-{
-	null = INT_MIN
-};
-
-# define FT_RED   "\033[0;31m"
-# define FT_GREEN "\033[0;32m"
-# define FT_CYAN  "\033[36m"
-# define FT_RESET "\e[0m"
-
-void sigsegv(int signal)
-{
-	(void) signal;
-	printf("> "FT_CYAN".SIGSEGV"FT_RESET"\n");
-	exit(EXIT_SUCCESS);
-}
-
-void check(bool succes)
-{
-	if (succes)
-		printf("> "FT_GREEN".OK "FT_RESET"\n");
-	else
-		printf("> "FT_RED".KO "FT_RESET"\n");
-}
-
-void ft_print_int_tab(int tab[], size_t size, const char *eol)
-{
-	size_t pos;
-
-	pos = 0;
-	printf("[");
-	if (pos < size)
-		printf("%d", tab[pos++]);
-	while (pos < size)
-		printf(", %d", tab[pos++]);
-	printf("]");
-	if (!eol)
-		printf("\n");
-	else
-		printf("%s", eol);
-}
-
-void ft_print_int_tab_null(int tab[], size_t size, int nil, const char *eol)
-{
-	size_t pos;
-	int val;
-
-	pos = 0;
-	printf("[");
-	if (pos < size)
-	{
-		val = tab[pos++];
-		if (val == nil)
-			printf("%s", "null");
-		else
-			printf("%d", val);
-	}
-	while (pos < size)
-	{
-		val = tab[pos++];
-		if (val == nil)
-			printf(", %s", "null");
-		else
-			printf(", %d", val);
-	}
-	printf("]");
-	if (!eol)
-		printf("\n");
-	else
-		printf("%s", eol);
-}
-
-#define MAX_STACK_SIZE 10000
-typedef struct TreeNode TreeNode;
-
-struct TreeNode
-{
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-};
-
-struct TreeNode *new_node(int val)
-{
-	struct TreeNode *node = (struct TreeNode *) malloc(sizeof(struct TreeNode));
-	node->val = val;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
-}
-
-struct TreeNode *deserialize_level_order(int *arr, int size)
-{
-	struct TreeNode	*root = NULL;
-	struct TreeNode	*current;
-	struct TreeNode	*queue[MAX_STACK_SIZE];
-	int				front = 0, rear = 0;
-	int 			i = 0;
-
-	if (size == 0 || arr[0] == null)
-		return NULL;
-
-	root = new_node(arr[0]);
-	queue[rear++] = root;
-
-	while (i < size) // Start from the second element in the array
-	{
-		current = queue[front++]; // Dequeue the front node
-
-		if (++i < size && arr[i] != null)
-		{
-			current->left = new_node(arr[i]);
-			queue[rear++] = current->left; // Enqueue the left child
-		}
-		if (++i < size && arr[i] != null)
-		{
-			current->right = new_node(arr[i]);
-			queue[rear++] = current->right; // Enqueue the right child
-		}
-	}
-	return (root);
-}
 
 #define MAX_HEIGHT 1000
 int lprofile[MAX_HEIGHT];
 int rprofile[MAX_HEIGHT];
 #define INFINITY (1<<20) // hack? this seems defined somewhere.. math.h?
+
+typedef struct TreeNode
+{
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+} TreeNode;
 
 typedef struct asciiTree ASCIITree;
 
@@ -434,6 +302,3 @@ void print_tree(struct TreeNode *root)
 	}
 	free_ascii_tree(proot);
 }
-
-
-#endif //LEETCODE75_H

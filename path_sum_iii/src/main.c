@@ -13,13 +13,6 @@
 #include <limits.h>
 #include "leetcode75.h"
 
-struct TreeNode
-{
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-};
-
 /**
  * 437. Path Sum III
  *
@@ -31,13 +24,6 @@ struct TreeNode
 int pathSum(struct TreeNode *root, int targetSum);
 
 #define MAX_STACK_SIZE 10000
-
-typedef struct TreeNode TreeNode;
-
-enum
-{
-	null = INT_MIN
-};
 
 struct s_input
 {
@@ -72,15 +58,6 @@ void free_tree(TreeNode *root)
 			stack[stackSize++] = node->left;
 		free(node);
 	}
-}
-
-TreeNode *new_node(int data)
-{
-	TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
-	node->val = data;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
 }
 
 TreeNode *getTree(const int *arr, int size)
@@ -131,9 +108,8 @@ static int ft_do_test(struct s_input *input)
 	int check_val;
 
 	ft_print_int_tab_null(input->arr, input->arrSize, null, NULL);
-
-	root = getTree(input->arr, input->arrSize);
-
+	root = deserialize_level_order(input->arr, input->arrSize);
+	print_tree(root);
 	result = pathSum(root, input->targetSum);
 	check_val = (result == input->expected);
 	if (!check_val)
@@ -179,7 +155,7 @@ int main(void)
 			.arrSize = 9,
 			.arr = (int[9]) {1,null,2,null,3,null,4,null,5},
 			.targetSum = 3,
-			.expected = 1
+			.expected = 2
 		},
 		{
 			.arrSize = 10,

@@ -5,20 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/02 19:43:53 by abelov            #+#    #+#              #
-#    Updated: 2024/09/02 19:43:54 by abelov           ###   ########.fr        #
+#    Created: 2024/09/04 00:03:47 by abelov            #+#    #+#              #
+#    Updated: 2024/09/04 00:03:48 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-project(path_sum_iii C)
+project(longest_zigzag_path C)
 
 set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c
-        src/pathSum.c)
+        src/longestZigZag.c)
 target_compile_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_CFLAGS})
-target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS})
+target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS} -lm)
 set_target_properties(${TARGET_EXE_NAME} PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}"
         OUTPUT_NAME "${PROJECT_NAME}")

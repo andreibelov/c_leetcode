@@ -14,15 +14,6 @@
 
 #define MAX_STACK_SIZE 10000
 
-typedef struct TreeNode TreeNode;
-
-struct TreeNode
-{
-	int		 val;
-	TreeNode *left;
-	TreeNode *right;
-};
-
 /**
  * 872. Leaf-Similar Trees
  *
@@ -47,11 +38,6 @@ typedef struct s_stack_el
 	int idx;
 } stack_el;
 
-enum
-{
-	null = -101
-};
-
 void free_tree(TreeNode *root)
 {
 	TreeNode *node;
@@ -71,15 +57,6 @@ void free_tree(TreeNode *root)
 			stack[stackSize++] = node->left;
 		free(node);
 	}
-}
-
-TreeNode *new_node(int data)
-{
-	TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
-	node->val = data;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
 }
 
 TreeNode *getTree(const int *arr, int size)
@@ -130,11 +107,15 @@ static int ft_do_test(struct s_input *input)
 	int result;
 	int check_val;
 
-	ft_print_int_tab(input->serTree1, input->serTree1Size, "\n");
-	ft_print_int_tab(input->serTree2, input->serTree2Size, "\n");
+	ft_print_int_tab_null(input->serTree1, input->serTree1Size, null, "\n");
+	ft_print_int_tab_null(input->serTree2, input->serTree2Size, null, "\n");
 
-	root1 = getTree(input->serTree1, input->serTree1Size);
-	root2 = getTree(input->serTree2, input->serTree2Size);
+	root1 = deserialize_level_order(input->serTree1, input->serTree1Size);
+	root2 = deserialize_level_order(input->serTree2, input->serTree2Size);
+
+	print_tree(root1);
+	printf("===================\n");
+	print_tree(root2);
 
 	result = leafSimilar(root1, root2);
 	check_val = (result == input->expected);
