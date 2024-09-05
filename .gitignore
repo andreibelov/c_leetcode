@@ -51,6 +51,7 @@ gdb.txt
 /good_nodes_in_btree/good_nodes_in_btree
 /path_sum_iii/path_sum_iii
 /longest_zigzag_path/longest_zigzag_path
+/lowest_common_ancestor/lowest_common_ancestor
 
 
 # From https://stackoverflow.com/questions/15606955/:

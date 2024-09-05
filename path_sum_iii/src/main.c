@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
 #include "leetcode75.h"
 
 /**
@@ -38,27 +37,6 @@ typedef struct s_stack_el
 	TreeNode *node;
 	int idx;
 } stack_el;
-
-void free_tree(TreeNode *root)
-{
-	TreeNode *node;
-	TreeNode *stack[MAX_STACK_SIZE];
-	int stackSize = 0;
-
-	if (root == NULL) return;
-
-	stack[stackSize++] = root;
-
-	while (stackSize != 0)
-	{
-		node = stack[--stackSize];
-		if (node->right != NULL)
-			stack[stackSize++] = node->right;
-		if (node->left != NULL)
-			stack[stackSize++] = node->left;
-		free(node);
-	}
-}
 
 TreeNode *getTree(const int *arr, int size)
 {

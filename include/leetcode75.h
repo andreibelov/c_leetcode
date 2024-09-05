@@ -143,7 +143,7 @@ struct TreeNode *deserialize_level_order(int *arr, int size)
 	return (root);
 }
 
-#define MAX_HEIGHT 1000
+#define MAX_HEIGHT 10000
 int lprofile[MAX_HEIGHT];
 int rprofile[MAX_HEIGHT];
 #define INFINITY (1<<20) // hack? this seems defined somewhere.. math.h?
@@ -173,9 +173,6 @@ struct asciiTree
 	int label_length;
 };
 
-
-// used for printing next node in the same level,
-// this is the x coordinate of the next char printed
 int print_next;
 
 int MIN(int X, int Y)
@@ -214,7 +211,6 @@ ASCIITree *build_ascii_tree_recursive(TreeNode *t)
 	return node;
 }
 
-// Copy the tree into the ascii node structre
 ASCIITree *build_ascii_tree(TreeNode *t)
 {
 	ASCIITree *node;
@@ -223,6 +219,27 @@ ASCIITree *build_ascii_tree(TreeNode *t)
 	node = build_ascii_tree_recursive(t);
 	node->parent_dir = 0;
 	return node;
+}
+
+void free_tree(TreeNode *root)
+{
+	TreeNode *node;
+	TreeNode *stack[MAX_STACK_SIZE];
+	int stackSize = 0;
+
+	if (root == NULL) return;
+
+	stack[stackSize++] = root;
+
+	while (stackSize != 0)
+	{
+		node = stack[--stackSize];
+		if (node->right != NULL)
+			stack[stackSize++] = node->right;
+		if (node->left != NULL)
+			stack[stackSize++] = node->left;
+		free(node);
+	}
 }
 
 // Free all the nodes of the given tree
