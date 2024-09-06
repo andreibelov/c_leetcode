@@ -143,6 +143,41 @@ struct TreeNode *deserialize_level_order(int *arr, int size)
 	return (root);
 }
 
+int *serialize_level_order(struct TreeNode *root, int *arraySize)
+{
+	struct TreeNode	*node;
+	struct TreeNode	*queue[MAX_STACK_SIZE];
+	int				front = 0, rear = 0;
+	int				*result = NULL;
+	int				stack[MAX_STACK_SIZE * 2];
+	int 			sp = 0;
+
+	if (arraySize == NULL)
+		return NULL;
+	if (root)
+		queue[rear++] = root;
+	while (rear > front) // Start from the second element in the array
+	{
+		node = queue[front++];
+
+		if (node)
+		{
+			stack[sp++] = node->val;
+			if (node->left || node->right)
+			{
+				queue[rear++] = node->left;
+				queue[rear++] = node->right;
+			}
+		}
+		else
+			stack[sp++] = null;
+	}
+	*arraySize = sp;
+	result = (int *) malloc(sp * sizeof(int));
+	memcpy(result, stack, sp * sizeof(int));
+	return (result);
+}
+
 #define MAX_HEIGHT 10000
 int lprofile[MAX_HEIGHT];
 int rprofile[MAX_HEIGHT];
