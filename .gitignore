@@ -53,6 +53,7 @@ gdb.txt
 /longest_zigzag_path/longest_zigzag_path
 /lowest_common_ancestor/lowest_common_ancestor
 /right_side_view/right_side_view
+/maximum_level_sum/maximum_level_sum
 
 
 # From https://stackoverflow.com/questions/15606955/:

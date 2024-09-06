@@ -93,7 +93,13 @@ int pathSum(struct TreeNode *root, int sum)
 	{
 		stack_el *el = &stack[sp - 1];
 
-		if (!el->isBacktracking)
+		if (el->isBacktracking)
+		{
+			/* Backtracking: decrement the prefix sum count */
+			prefixSumCounts[hash(el->sum)]--;
+			sp--;
+		}
+		else
 		{
 			node = el->node;
 			el->sum += node->val;
@@ -109,16 +115,10 @@ int pathSum(struct TreeNode *root, int sum)
 			/* Push right and left children to the stack */
 			if (node->right)
 				stack[sp++] = (stack_el) {.node = node->right,
-										  .sum = el->sum, .isBacktracking = 0};
+					.sum = el->sum, .isBacktracking = 0};
 			if (node->left)
 				stack[sp++] = (stack_el) {.node = node->left,
-										  .sum = el->sum, .isBacktracking = 0};
-		}
-		else
-		{
-			/* Backtracking: decrement the prefix sum count */
-			prefixSumCounts[hash(el->sum)]--;
-			sp--;
+					.sum = el->sum, .isBacktracking = 0};
 		}
 	}
 	return (result);
