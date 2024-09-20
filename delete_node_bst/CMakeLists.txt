@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/02 19:43:53 by abelov            #+#    #+#              #
-#    Updated: 2024/09/02 19:43:54 by abelov           ###   ########.fr        #
+#    Created: 2024/09/07 12:17:01 by abelov            #+#    #+#              #
+#    Updated: 2024/09/07 12:17:02 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-project(search_bst C)
+project(delete_node_bst C)
 
 set(TARGET_EXE_NAME "${PROJECT_NAME}")
 
 add_executable(${TARGET_EXE_NAME}
         src/main.c
-        src/searchBST.c)
+        src/deleteNode.c)
 target_compile_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_CFLAGS})
 target_link_options(${TARGET_EXE_NAME} PRIVATE ${COMMON_LDFLAGS})
 set_target_properties(${TARGET_EXE_NAME} PROPERTIES

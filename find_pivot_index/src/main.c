@@ -75,4 +75,3 @@ int main(void)
 		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }
-

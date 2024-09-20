@@ -55,6 +55,7 @@ gdb.txt
 /right_side_view/right_side_view
 /maximum_level_sum/maximum_level_sum
 /search_bst/search_bst
+/delete_node_bst/delete_node_bst
 
 
 # From https://stackoverflow.com/questions/15606955/:

@@ -33,7 +33,7 @@ set(COMMON_CFLAGS
         -fno-exceptions
         -ffunction-sections
         -fdata-sections
-        -fomit-frame-pointer
+        -fno-omit-frame-pointer
         -fdwarf2-cfi-asm
         -fcf-protection=none
         -mmanual-endbr
@@ -88,3 +88,4 @@ add_subdirectory(lowest_common_ancestor)
 add_subdirectory(right_side_view)
 add_subdirectory(maximum_level_sum)
 add_subdirectory(search_bst)
+add_subdirectory(delete_node_bst)

@@ -68,8 +68,8 @@ static int ft_do_test(struct s_input *input)
 		if (!check_val)
 		{
 			printf("got ");
-			ft_print_int_tab(result, resultSize, " whilst ");
-			ft_print_int_tab(input->expected, input->expectedSize, "");
+			ft_print_int_tab_null(result, resultSize, null, " whilst ");
+			ft_print_int_tab_null(input->expected, input->expectedSize, null, "");
 			printf(" was to be expected \n");
 		}
 	}

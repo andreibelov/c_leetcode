@@ -143,6 +143,66 @@ struct TreeNode *deserialize_level_order(int *arr, int size)
 	return (root);
 }
 
+#define NULL_VALUE null
+#define MAX_QUEUE_SIZE MAX_STACK_SIZE
+
+int *serialize_level_order_leet(struct TreeNode *root, int *arraySize) {
+	struct TreeNode *currentNode;
+	struct TreeNode *queue[MAX_QUEUE_SIZE];
+	int front = 0, rear = 0;
+	int *serializedArray = NULL;
+	int tempStack[MAX_QUEUE_SIZE * 2];
+	int stackPointer = 0;
+
+	if (arraySize == NULL)
+		return NULL;
+
+	// Initialize level-order queue with root node
+	if (root)
+		queue[rear++] = root;
+	else {
+		*arraySize = 0;
+		return NULL; // Return NULL for an empty tree
+	}
+
+	// Process the queue in level-order
+	while (rear > front) {
+		currentNode = queue[front++];
+
+		if (currentNode) {
+			tempStack[stackPointer++] = currentNode->val;
+
+			// Always add children to maintain structure, even if they are null
+			queue[rear++] = currentNode->left;
+			queue[rear++] = currentNode->right;
+		} else {
+			tempStack[stackPointer++] = NULL_VALUE; // Represent null child as NULL_VALUE
+		}
+	}
+
+	// Set the size of the serialized array
+	*arraySize = stackPointer;
+
+	// Trim trailing nulls from the serialization (LeetCode style)
+	while (stackPointer > 0 && tempStack[stackPointer - 1] == NULL_VALUE) {
+		stackPointer--;
+	}
+
+	*arraySize = stackPointer;
+
+	// Allocate memory for the result array
+	serializedArray = (int *) malloc(stackPointer * sizeof(int));
+	if (serializedArray == NULL) {
+		// Handle memory allocation failure
+		return NULL;
+	}
+
+	// Copy the temp stack into the result array
+	memcpy(serializedArray, tempStack, stackPointer * sizeof(int));
+
+	return serializedArray;
+}
+
 int *serialize_level_order(struct TreeNode *root, int *arraySize)
 {
 	struct TreeNode	*node;
