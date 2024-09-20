@@ -57,6 +57,7 @@ gdb.txt
 /search_bst/search_bst
 /delete_node_bst/delete_node_bst
 /guess_number/guess_number
+/successful_pairs_of_spells/successful_pairs_of_spells
 
 
 # From https://stackoverflow.com/questions/15606955/:

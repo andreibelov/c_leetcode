@@ -26,12 +26,6 @@ typedef struct TreeNode TreeNode;
  */
 struct TreeNode *deleteNode(struct TreeNode *root, int key);
 
-typedef struct Array
-{
-	int *nums;
-	int numsSize;
-}	Array;
-
 struct s_test_case
 {
 	Array	*input;
@@ -57,11 +51,11 @@ static int ft_do_test(struct s_test_case *test_case)
 	int resultSize;
 	int check_val = 0;
 
-	ft_print_int_tab_null(test_case->input->nums,
-						  test_case->input->numsSize, null, "\n");
+	ft_print_int_tab_null(test_case->input->arr,
+						  test_case->input->size, null, "\n");
 
-	ans = deleteNode(deserialize_level_order(test_case->input->nums,
-											 test_case->input->numsSize),
+	ans = deleteNode(deserialize_level_order(test_case->input->arr,
+											 test_case->input->size),
 					 test_case->key);
 	result = serialize_level_order_leet(ans, &resultSize);
 
@@ -69,14 +63,14 @@ static int ft_do_test(struct s_test_case *test_case)
 	while (++i < test_case->expectedSize)
 	{
 		arr = test_case->expected[i];
-		if (resultSize == arr->numsSize)
+		if (resultSize == arr->size)
 		{
 			if (resultSize == 0)
 				check_val = 1;
 			else
 				check_val = !memcmp(result,
-									arr->nums,
-									(sizeof(int) * arr->numsSize));
+									arr->arr,
+									(sizeof(int) * arr->size));
 			if (check_val) break;
 		}
 	}
@@ -85,8 +79,8 @@ static int ft_do_test(struct s_test_case *test_case)
 	{
 		printf("\n\n============================\n");
 		printf("INITIAL TREE\n");
-		root = deserialize_level_order(test_case->input->nums,
-									   test_case->input->numsSize);
+		root = deserialize_level_order(test_case->input->arr,
+									   test_case->input->size);
 		print_tree(root);
 		printf("============================\n");
 		printf("RESULT\n");
@@ -101,9 +95,9 @@ static int ft_do_test(struct s_test_case *test_case)
 			arr = test_case->expected[i];
 			printf("============================\n");
 			printf("EXPECTED%d\n", i);
-			ft_print_int_tab_null(arr->nums, arr->numsSize, null, "\n");
+			ft_print_int_tab_null(arr->arr, arr->size, null, "\n");
 			expectedTree =
-				deserialize_level_order(arr->nums, arr->numsSize);
+				deserialize_level_order(arr->arr, arr->size);
 			print_tree(expectedTree);
 			free_tree(expectedTree);
 		}
@@ -133,7 +127,7 @@ int main(void)
 	int i;
 	struct s_test_case cases[] = {
 		{
-			.input = &(Array){(int[7]) {5,3,6,2,4,null,7}, .numsSize = 7},
+			.input = &(Array){(int[7]) {5,3,6,2,4,null,7}, .size = 7},
 			.key = 3,
 			.expected = {
 				&(Array){(int[7]) {5, 4, 6, 2, null, null, 7}, 7},
@@ -181,7 +175,7 @@ int main(void)
 			.expectedSize = 2
 		},
 		{
-			.input = &(Array){(int[7]) {50,30,70,null,40,60,80}, .numsSize = 7},
+			.input = &(Array){(int[7]) {50,30,70,null,40,60,80}, .size = 7},
 			.key = 50,
 			.expected = {
 				&(Array){(int[7]) {60,30,70,null,40,null,80}, 7},
@@ -191,7 +185,7 @@ int main(void)
 			.expectedSize = 3
 		},
 		{
-			.input = &(Array){ .numsSize = 94, .nums = (int[94]) {2,0,33,null,1,25,40,null,null,11,31,34,45,10,18,29,32,null,36,43,46,4,null,12,24,26,30,null,null,35,39,42,44,null,48,3,9,null,14,22,null,null,27,null,null,null,null,38,null,41,null,null,null,47,49,null,null,5,null,13,15,21,23,null,28,37,null,null,null,null,null,null,null,null,8,null,null,null,17,19,null,null,null,null,null,null,null,7,null,16,null,null,20,6}},
+			.input = &(Array){ .size = 94, .arr = (int[94]) {2, 0, 33, null, 1, 25, 40, null, null, 11, 31, 34, 45, 10, 18, 29, 32, null, 36, 43, 46, 4, null, 12, 24, 26, 30, null, null, 35, 39, 42, 44, null, 48, 3, 9, null, 14, 22, null, null, 27, null, null, null, null, 38, null, 41, null, null, null, 47, 49, null, null, 5, null, 13, 15, 21, 23, null, 28, 37, null, null, null, null, null, null, null, null, 8, null, null, null, 17, 19, null, null, null, null, null, null, null, 7, null, 16, null, null, 20, 6}},
 			.key = 33,
 			.expected = {
 				&(Array){(int[92]) {2,0,34,null,1,25,40,null,null,11,31,35,45,10,18,29,32,null,36,43,46,4,null,12,24,26,30,null,null,null,39,42,44,null,48,3,9,null,14,22,null,null,27,null,null,38,null,41,null,null,null,47,49,null,null,5,null,13,15,21,23,null,28,37,null,null,null,null,null,null,null,null,8,null,null,null,17,19,null,null,null,null,null,null,null,7,null,16,null,null,20,6}, 92},

@@ -28,6 +28,7 @@ set(COMMON_CFLAGS
         -Wall -Wextra -Werror
         -Wwrite-strings
         -Wimplicit
+        -Wno-error=unused-parameter
         -O0
         -masm=att
         -fno-exceptions
@@ -90,3 +91,4 @@ add_subdirectory(maximum_level_sum)
 add_subdirectory(search_bst)
 add_subdirectory(delete_node_bst)
 add_subdirectory(guess_number)
+add_subdirectory(successful_pairs_of_spells)

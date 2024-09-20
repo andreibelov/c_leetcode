@@ -20,6 +20,12 @@
 #include <signal.h>
 #include <limits.h>
 
+typedef struct Array
+{
+	int *arr;
+	int size;
+}	Array;
+
 enum
 {
 	null = INT_MIN
