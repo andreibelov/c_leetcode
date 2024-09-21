@@ -59,6 +59,7 @@ gdb.txt
 /guess_number/guess_number
 /successful_pairs_of_spells/successful_pairs_of_spells
 /kth_largest_element/kth_largest_element
+/find_peak_element/find_peak_element
 
 
 # From https://stackoverflow.com/questions/15606955/:
