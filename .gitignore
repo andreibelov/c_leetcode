@@ -58,6 +58,7 @@ gdb.txt
 /delete_node_bst/delete_node_bst
 /guess_number/guess_number
 /successful_pairs_of_spells/successful_pairs_of_spells
+/kth_largest_element/kth_largest_element
 
 
 # From https://stackoverflow.com/questions/15606955/:
