@@ -26,6 +26,12 @@ typedef struct Array
 	int size;
 }	Array;
 
+typedef struct TwoDArray
+{
+	Array *arrays;
+	int size;
+}	TwoDArray;
+
 enum
 {
 	null = INT_MIN
