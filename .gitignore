@@ -67,6 +67,7 @@ gdb.txt
 /combination_sum_iii/combination_sum_iii
 /counting_bits/counting_bits
 /tribonacci_number/tribonacci_number
+/min_cost_climbing_stairs/min_cost_climbing_stairs
 
 
 # From https://stackoverflow.com/questions/15606955/:
