@@ -64,6 +64,9 @@ gdb.txt
 /number_of_provinces/number_of_provinces
 /koko_eating_bananas/koko_eating_bananas
 /letter_combinations/letter_combinations
+/combination_sum_iii/combination_sum_iii
+/counting_bits/counting_bits
+/tribonacci_number/tribonacci_number
 
 
 # From https://stackoverflow.com/questions/15606955/:
@@ -148,6 +151,7 @@ dkms.conf
 
 # CMake
 cmake-build-*/
+build-*/
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml

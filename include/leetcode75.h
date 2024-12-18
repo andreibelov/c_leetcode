@@ -24,19 +24,38 @@ typedef struct Array
 {
 	int *arr;
 	int size;
+	int iter;
 }	Array;
 
 typedef struct StringArray
 {
 	char **arr;
 	int size;
+	int iter;
 }	StringArray;
 
 typedef struct TwoDArray
 {
 	Array *arrays;
 	int size;
+	int iter;
 }	TwoDArray;
+
+int intcmp(const int *a, const int *b)
+{ return (*a > *b) - (*a < *b); }
+
+int arraycmp(Array *p, Array *q)
+{
+	int ret;
+
+	if (!p || !q)
+		return (-1);
+
+	ret = p->size - p->size;
+	if (!ret)
+		ret = memcmp(p->arr, q->arr, p->size * sizeof(int));
+	return (ret);
+}
 
 enum
 {
@@ -73,11 +92,13 @@ void ft_print_int_tab(int tab[], size_t size, const char *eol)
 		printf("%d", tab[pos++]);
 	while (pos < size)
 		printf(", %d", tab[pos++]);
-	printf("]");
-	if (!eol)
-		printf("\n");
-	else
-		printf("%s", eol);
+	printf("]%s", (!eol) ? "\n" : eol);
+}
+
+void ft_print_array(Array *a, const char *eol)
+{
+	if (a)
+		ft_print_int_tab(a->arr, a->size, eol);
 }
 
 void ft_print_str_tab(char **tab,  size_t size, const char *eol)
@@ -90,11 +111,7 @@ void ft_print_str_tab(char **tab,  size_t size, const char *eol)
 		printf("\"%s\"", tab[pos++]);
 	while (pos < size)
 		printf(", \"%s\"", tab[pos++]);
-	printf("]");
-	if (!eol)
-		printf("]\n");
-	else
-		printf("%s", eol);
+	printf("]%s", (!eol) ? "\n" : eol);
 }
 
 
@@ -121,12 +138,10 @@ void ft_print_int_tab_null(int tab[], size_t size, int nil, const char *eol)
 		else
 			printf(", %d", val);
 	}
-	printf("]");
-	if (!eol)
-		printf("\n");
-	else
-		printf("%s", eol);
+	printf("]%s", (!eol) ? "\n" : eol);
 }
+
+
 
 #define MAX_STACK_SIZE 10000
 typedef struct TreeNode TreeNode;

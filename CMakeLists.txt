@@ -27,8 +27,9 @@ set(COMMON_LDFLAGS
 set(COMMON_CFLAGS
         -Wall -Wextra -Werror
         -Wwrite-strings
-        -Wimplicit
+        -Wimplicit -Wnarrowing
         -Wno-error=unused-parameter
+        -Wno-error=unused-variable
         -O0
         -masm=att
         -fno-exceptions
@@ -98,3 +99,6 @@ add_subdirectory(keys_and_rooms)
 add_subdirectory(number_of_provinces)
 add_subdirectory(koko_eating_bananas)
 add_subdirectory(letter_combinations)
+add_subdirectory(combination_sum_iii)
+add_subdirectory(tribonacci_number)
+add_subdirectory(counting_bits)
