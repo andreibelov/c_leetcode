@@ -6,7 +6,7 @@
 #    By: abelov <abelov@student.42london.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 09:33:05 by abelov            #+#    #+#              #
-#    Updated: 2024/08/27 01:55:42 by abelov           ###   ########.fr        #
+#    Updated: 2024/12/19 17:05:28 by abelov           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,3 +104,4 @@ add_subdirectory(tribonacci_number)
 add_subdirectory(counting_bits)
 add_subdirectory(min_cost_climbing_stairs)
 add_subdirectory(edit_distance)
+add_subdirectory(single_number)

@@ -69,6 +69,7 @@ gdb.txt
 /tribonacci_number/tribonacci_number
 /min_cost_climbing_stairs/min_cost_climbing_stairs
 /edit_distance/edit_distance
+/single_number/single_number
 
 
 # From https://stackoverflow.com/questions/15606955/:

@@ -5,23 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 00:17:43 by abelov            #+#    #+#             */
-/*   Updated: 2024/12/18 00:17:43 by abelov           ###   ########.fr       */
+/*   Created: 2024/12/19 16:58:26 by abelov            #+#    #+#             */
+/*   Updated: 2024/12/19 16:58:26 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "leetcode75.h"
 
 /**
- * 746. Min Cost Climbing Stairs
+ * 136. Single Number
  *
- * Return the minimum cost to reach the top of the floor.
- *
- * Constraints:
- * 	2 <= cost.length <= 1000
- * 	0 <= cost[i] <= 999
+ * Given a non-empty array of integers nums, every element appears twice except
+ * for one. Find that single one.
  */
-int minCostClimbingStairs(const int *cost, int costSize);
+int singleNumber(int *nums, int numsSize);
 
 struct s_input
 {
@@ -36,7 +33,7 @@ int ft_do_test(struct s_input *input)
 	int	result;
 	ft_print_array(input->cost, NULL);
 
-	result = minCostClimbingStairs(input->cost->arr, input->cost->size);
+	result = singleNumber(input->cost->arr, input->cost->size);
 	check_val = (result == input->expected);
 	check(check_val);
 	if (!check_val)
@@ -50,12 +47,16 @@ int main(void)
 	int				i;
 	struct s_input	inputs[] = {
 		{
-			.cost = &(Array){ .arr = (int[]){10,15,20}, .size = 3},
-			.expected = 15
+			.cost = &(Array){ .arr = (int[]){2,3,1}, .size = 3},
+			.expected = 1
 		},
 		{
-			.cost = &(Array){ .arr = (int[]){1,100,1,1,1,100,1,1,100,1}, .size = 10},
-			.expected = 6
+			.cost = &(Array){ .arr = (int[]){4,1,2,1,2}, .size = 5},
+			.expected = 4
+		},
+		{
+			.cost = &(Array){ .arr = (int[]){1}, .size = 1},
+			.expected = 1
 		}
 	};
 
@@ -65,3 +66,5 @@ int main(void)
 		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }
+
+

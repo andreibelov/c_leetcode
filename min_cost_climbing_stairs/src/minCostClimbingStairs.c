@@ -24,7 +24,7 @@
  *
  * Return the minimum cost to reach the top of the floor.
  */
-int minCostClimbingStairs(int* cost, int costSize)
+int minCostClimbingStairs(const int* cost, int costSize)
 {
 	int i;
 	int ans;
