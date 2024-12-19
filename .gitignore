@@ -70,6 +70,7 @@ gdb.txt
 /min_cost_climbing_stairs/min_cost_climbing_stairs
 /edit_distance/edit_distance
 /single_number/single_number
+/minimum_flips/minimum_flips
 
 
 # From https://stackoverflow.com/questions/15606955/:

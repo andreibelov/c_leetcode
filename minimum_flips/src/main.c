@@ -5,24 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 16:58:26 by abelov            #+#    #+#             */
-/*   Updated: 2024/12/19 16:58:26 by abelov           ###   ########.fr       */
+/*   Created: 2024/12/19 17:07:53 by abelov            #+#    #+#             */
+/*   Updated: 2024/12/19 17:07:54 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "leetcode75.h"
 
 /**
- * 136. Single Number
+ * 1318. Minimum Flips to Make a OR b Equal to c
  *
- * Given a non-empty array of integers nums, every element appears twice except
- * for one. Find that single one.
+ * Constraints:
+ * 	1 <= a <= 10^9
+ * 	1 <= b <= 10^9
+ * 	1 <= c <= 10^9
  */
-int singleNumber(int *nums, int numsSize);
+int minFlips(int a, int b, int c);
 
 struct s_input
 {
-	Array *cost;
+	Array *arr;
 	int expected;
 };
 
@@ -30,9 +32,12 @@ int ft_do_test(struct s_input *input)
 {
 	int	check_val;
 	int	result;
-	ft_print_array(input->cost, NULL);
 
-	result = singleNumber(input->cost->arr, input->cost->size);
+	Array *a = input->arr;
+
+	ft_print_array(a, NULL);
+
+	result = minFlips(a->arr[0], a->arr[1], a->arr[2]);
 	check_val = (result == input->expected);
 	check(check_val);
 	if (!check_val)
@@ -46,17 +51,17 @@ int main(void)
 	int				i;
 	struct s_input	inputs[] = {
 		{
-			.cost = &(Array){ .arr = (int[]){2,3,1}, .size = 3},
+			.arr = &(Array){ .arr = (int[]){2,6,5}, .size = 3},
+			.expected = 3
+		},
+		{
+			.arr = &(Array){ .arr = (int[]){4,2,7}, .size = 3},
 			.expected = 1
 		},
 		{
-			.cost = &(Array){ .arr = (int[]){4,1,2,1,2}, .size = 5},
-			.expected = 4
+			.arr = &(Array){ .arr = (int[]){1,2,3}, .size = 3},
+			.expected = 0
 		},
-		{
-			.cost = &(Array){ .arr = (int[]){1}, .size = 1},
-			.expected = 1
-		}
 	};
 
 	signal(SIGSEGV, sigsegv);
@@ -65,5 +70,3 @@ int main(void)
 		ft_do_test(&inputs[i]);
 	return (EXIT_SUCCESS);
 }
-
-
