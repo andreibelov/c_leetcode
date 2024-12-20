@@ -5,37 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelov <abelov@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 19:39:27 by abelov            #+#    #+#             */
-/*   Updated: 2024/09/27 19:39:27 by abelov           ###   ########.fr       */
+/*   Created: 2024/12/20 18:30:48 by abelov            #+#    #+#             */
+/*   Updated: 2024/12/20 18:30:49 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "leetcode75.h"
 
+typedef struct {
+	int index;
+	struct stack
+	{
+		int price;
+		int index;
+	} stack[1024];
+	int ss;
+} StockSpanner;
+
 /**
- * 338. Counting Bits
+ * 901. Online Stock Span
  *
- * Given an integer n, return an array ans of length n + 1 such that
- * for each i (0 <= i <= n), ans[i] is the number of 1's
- * in the binary representation of i.
+ * Design an algorithm that collects daily price quotes for some stock
+ * and returns the span of that stock's price for the current day.
+ *
+ * Use monotonic stack.
+ * Keep the stack of monotonically increasing price and index.
  *
  * Constraints:
- * 	0 <= n <= 105
+ * 	1 <= price <= 105
+ * 	At most 104 calls will be made to next.
  */
-int *countBits(int n, int *returnSize);
+int stockSpannerNext(StockSpanner *obj, int price);
+
+StockSpanner *stockSpannerCreate();
+
+void stockSpannerFree(StockSpanner *obj);
 
 struct s_input
 {
-	int n;
+	Array *prices;
 	Array *expected;
 };
 
 int ft_do_test(struct s_input *input)
 {
+	Array *prices;
 	Array result;
 	int check_val;
+	StockSpanner *spanner = stockSpannerCreate();
 
-	result.arr = countBits(input->n, &result.size);
+	prices = input->prices;
+	result = (Array) {.size = prices->size, .iter = 0,
+		.arr = (int *) calloc(prices->size, sizeof(int))};
+	prices->iter = -1;
+	while (++(prices->iter) < prices->size)
+		result.arr[result.iter++] = stockSpannerNext(spanner, prices->arr[prices->iter]);
+	stockSpannerFree(spanner);
+
 	check_val = (input->expected->size == result.size);
 	if (!check_val)
 		printf("got array of size [\"%d\"] whilst \"%d\" was to be expected\n",
@@ -62,13 +88,9 @@ int main(void)
 	int i;
 	struct s_input inputs[] = {
 		{
-			.n = 2,
-			.expected = &(Array){ .arr = (int[3]){0,1,1}, .size = 3}
-		},
-		{
-			.n = 5,
-			.expected = &(Array){ .arr = (int[6]){0,1,1,2,1,2}, .size = 6}
-		},
+			.prices = &(Array) {.arr = (int[7]) {100, 80, 60, 70, 60, 75, 85}, .size = 7},
+			.expected = &(Array) {.arr = (int[7]) {1, 1, 1, 2, 1, 4, 6}, .size = 7}
+		}
 	};
 	size_t inputs_size = (sizeof(inputs) / sizeof(inputs[0]));
 

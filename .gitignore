@@ -71,6 +71,7 @@ gdb.txt
 /edit_distance/edit_distance
 /single_number/single_number
 /minimum_flips/minimum_flips
+/online_stock_span/online_stock_span
 
 
 # From https://stackoverflow.com/questions/15606955/:
