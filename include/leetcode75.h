@@ -57,6 +57,40 @@ int arraycmp(Array *p, Array *q)
 	return (ret);
 }
 
+int strarraycmp(StringArray *p, StringArray *q)
+{
+	int ret;
+
+	if (!p || !q)
+		return (-1);
+
+	ret = p->size - p->size;
+	if (!ret)
+	{
+		int i = -1;
+		while (++i < p->size)
+		{
+			ret = strcmp(p->arr[i], q->arr[i]);
+			if (ret) break;
+		}
+	}
+	return (ret);
+}
+
+int* intdup(const int* arr, size_t len) {
+	if (arr == NULL || len == 0) {
+		return NULL;
+	}
+
+	int* new_arr = malloc(len * sizeof(int));
+	if (new_arr == NULL) {
+		return NULL; // Memory allocation failed
+	}
+
+	memcpy(new_arr, arr, len * sizeof(int));
+	return new_arr;
+}
+
 enum
 {
 	null = INT_MIN

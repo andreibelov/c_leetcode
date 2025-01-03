@@ -118,7 +118,7 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
 			if (el.node->right)
 				stack[sp++] = (stack_el) {el.node->right, 0};
 		}
-		/* Optional: the tracing still needs to be done after this the tracing still needs to be done after this */
+		/* Optional: the tracing still needs to be done after this */
 		else if (el.state == post_order)
 		{
 			/* Post-order step: all subtrees have been processed, move up the tree. */
