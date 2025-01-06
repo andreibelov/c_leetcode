@@ -27,12 +27,12 @@ typedef struct Array
 	int iter;
 }	Array;
 
-typedef struct StringArray
+typedef struct ArrayDouble
 {
-	char **arr;
+	double *arr;
 	int size;
-	int iter;
-}	StringArray;
+	int ss;
+}	ArrayDouble;
 
 typedef struct TwoDArray
 {
@@ -40,6 +40,20 @@ typedef struct TwoDArray
 	int size;
 	int iter;
 }	TwoDArray;
+
+typedef struct StringArray
+{
+	char **arr;
+	int size;
+	int iter;
+}	StringArray;
+
+typedef struct StringArrays
+{
+	StringArray *arrays;
+	int ss;
+	int size;
+}	StringArrays;
 
 int intcmp(const int *a, const int *b)
 { return (*a > *b) - (*a < *b); }
@@ -74,6 +88,19 @@ int strarraycmp(StringArray *p, StringArray *q)
 			if (ret) break;
 		}
 	}
+	return (ret);
+}
+
+int darraycmp(ArrayDouble *p, ArrayDouble *q)
+{
+	int ret;
+
+	if (!p || !q)
+		return (-1);
+
+	ret = p->size - p->size;
+	if (!ret)
+		ret = memcmp(p->arr, q->arr, p->size * sizeof(double));
 	return (ret);
 }
 
@@ -133,6 +160,25 @@ void ft_print_array(Array *a, const char *eol)
 {
 	if (a)
 		ft_print_int_tab(a->arr, a->size, eol);
+}
+
+void ft_print_double_tab(double tab[], size_t size, const char *eol)
+{
+	size_t pos;
+
+	pos = 0;
+	printf("[");
+	if (pos < size)
+		printf("%f", tab[pos++]);
+	while (pos < size)
+		printf(", %f", tab[pos++]);
+	printf("]%s", (!eol) ? "\n" : eol);
+}
+
+void ft_print_darray(ArrayDouble *a, const char *eol)
+{
+	if (a)
+		ft_print_double_tab(a->arr, a->size, eol);
 }
 
 void ft_print_str_tab(char **tab,  size_t size, const char *eol)

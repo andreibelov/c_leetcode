@@ -9,6 +9,7 @@
 /*   Updated: 2025/01/05 22:45:21 by abelov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "leetcode75.h"
 
 /**
@@ -38,12 +39,7 @@ typedef struct
 {
 	int row, col;
 } Point;
-typedef struct StringArrays
-{
-	StringArray *arrays;
-	int ss;
-	int size;
-} StringArrays;
+
 typedef struct s_input
 {
 	StringArrays maze;

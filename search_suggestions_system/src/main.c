@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "leetcode75.h"
+
 /**
  * 1268. Search Suggestions System
  *
@@ -30,15 +32,6 @@
 char ***suggestedProducts(char **products, int productsSize,
 						  char *searchWord, int *returnSize,
 						  int **returnColumnSizes);
-
-#include "leetcode75.h"
-
-typedef struct StringArrays
-{
-	StringArray	*arrays;
-	int ss;
-	int size;
-}	StringArrays;
 
 typedef struct s_input
 {
