@@ -175,7 +175,51 @@ void ft_print_int_tab_null(int tab[], size_t size, int nil, const char *eol)
 	printf("]%s", (!eol) ? "\n" : eol);
 }
 
+char	*ft_strpcat(char *dest, const char *src)
+{
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (--dest);
+}
 
+char	*ft_tab_str_join(char **strs, size_t nmemb, const char *sep)
+{
+	char	*new;
+	char	*p = NULL;
+	size_t	i;
+
+	if (nmemb == 0)
+		return (strdup(""));
+
+	i = -1;
+	size_t counter = 0;
+	while (++i < nmemb)
+		counter += strlen(strs[i]);
+	size_t targetlen = counter + 1 + strlen(sep) * (nmemb - 1);
+
+	new = (char *) malloc(sizeof(char) * targetlen);
+	if (!new)
+		return NULL;
+	const char *src = strs[0];
+	p = strcpy(new, src);
+	i = 0;
+	while (++i < nmemb)
+	{
+		src = sep;
+		while (*p)
+			p++;
+		while (*src)
+			*p++ = *src++;
+		src = strs[i];
+		while (*src)
+			*p++ = *src++;
+		*p-- = '\0';
+	}
+	return (new);
+}
 
 #define MAX_STACK_SIZE 10000
 typedef struct TreeNode TreeNode;
