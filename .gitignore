@@ -79,6 +79,7 @@ gdb.txt
 /smallest_number_in_infinite_set/smallest_number_in_infinite_set
 /nearest_exit_from_entrance_in_maze/nearest_exit_from_entrance_in_maze
 /evaluate_division/evaluate_division
+/reorder_routes/reorder_routes
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
