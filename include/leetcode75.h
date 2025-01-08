@@ -20,6 +20,17 @@
 #include <signal.h>
 #include <limits.h>
 
+typedef struct Point
+{
+	int x, y;
+} Point;
+
+typedef struct PointVal
+{
+	Point	coord;
+	int 	val;
+} PointVal;
+
 typedef struct Array
 {
 	int *arr;

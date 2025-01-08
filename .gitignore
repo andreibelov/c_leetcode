@@ -84,6 +84,7 @@ gdb.txt
 /daily_temperatures/daily_temperatures
 /non_overlapping_intervals/non_overlapping_intervals
 /minimum_number_of_arrows/minimum_number_of_arrows
+/unique_paths/unique_paths
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:

@@ -35,16 +35,11 @@
 int nearestExit(char **maze, int mazeSize, const int *mazeColSize,
 				const int *entrance, int entranceSize);
 
-typedef struct
-{
-	int row, col;
-} Point;
-
 typedef struct s_input
 {
 	StringArrays maze;
-	Point start;
-	int expected;
+	Point		 start;
+	int			 expected;
 } Input;
 
 int ft_do_test(Input *input)
@@ -61,7 +56,7 @@ int ft_do_test(Input *input)
 		sa.arr[sa.iter] = ft_tab_str_join(curr->arr, curr->size, "");
 	}
 	result = nearestExit(sa.arr, sa.size, (int[]) {(int) strlen(sa.arr[0])},
-						 (int[2]) {input->start.row, input->start.col}, 2);
+						 (int[2]) {input->start.x, input->start.y}, 2);
 	check_val = (input->expected == result);
 	if (!check_val)
 		printf("got \"%d\" whilst \"%d\" was to be expected\n",

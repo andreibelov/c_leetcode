@@ -18,11 +18,11 @@
 typedef struct
 {
 	int row, col;
-} Point;
+} Coord;
 
 typedef struct
 {
-	Point point;
+	Coord point;
 	int distance;
 } Node;
 
@@ -68,7 +68,7 @@ int nearestExit(char **maze, int mazeSize, const int *mazeColSize,
 	{
 		Node cur = queue[front++];
 		front %= MAX_QUEUE_SIZE;
-		Point *p = &cur.point;
+		Coord *p = &cur.point;
 
 		/* Check if we're at an exit (not the entrance) and at a boundary */
 		if ((p->row != entrance[0] || p->col != entrance[1]) &&
@@ -81,7 +81,7 @@ int nearestExit(char **maze, int mazeSize, const int *mazeColSize,
 		int i = -1;
 		while (++i < 4)
 		{
-			Point new = {p->row + directions[i][0], p->col + directions[i][1]};
+			Coord new = {p->row + directions[i][0], p->col + directions[i][1]};
 			if (in_boundaries(rows, cols, new.row, new.col) && maze[new.row][new.col] == '.' &&
 				!visited[new.row][new.col])
 			{
