@@ -40,8 +40,6 @@ typedef struct
 	const int *lengths;    // Array of lengths
 } SortContext;
 
-typedef int (*arrp)[2];
-
 int sortIntervals(const void *a, const void *b, void *arg)
 {
 	/* Get the actual arrays from their pointers */
@@ -84,14 +82,29 @@ int eraseOverlapIntervals(int **intervals, int intervalsSize,
 	qsort_r(intervals, intervalsSize, sizeof(int *),
 			(__compar_d_fn_t) sortIntervals, (void *) &context);
 	int nonOverlappingCount = 0;
-	for (int i = INT_MIN; intervalsSize--; intervals++)
-		if (i <= **intervals)
-		{
-			/* Update the end time to the current interval's end time */
-			i = 1[*intervals];
-		}
-		else
-			++nonOverlappingCount;
+	int end_time = INT_MIN;
+	int i = -1;
+	while (++i < intervalsSize)
+	{
+		/* Update the end time to the current interval's end time */
+
+//		typedef int (*interval)[2];
+//		interval curr = (interval)intervals[i];
+		/* or without typedef */
+//		int (*curr)[2]  = (int(*)[2])intervals[i];
+
+		/* using unconventional array subscript expression: */
+//		if (end_time <= (0)[*curr]) end_time = (1)[*curr];
+		/* same as: */
+//		if (end_time <= (*curr)[0]) end_time = (*curr)[1];
+
+//		typedef struct interval { int start, end; } interval;
+//		interval *curr = (interval *)intervals[i];
+//		if (end_time <= curr->start) end_time = curr->end;
+
+		if (end_time <= intervals[i][0]) end_time = intervals[i][1];
+		else ++nonOverlappingCount;
+	}
 	return (nonOverlappingCount);
 }
 
@@ -108,10 +121,10 @@ int eraseOverlapIntervals(int **intervals, int intervalsSize, const int *interva
 	qsort(intervals, intervalsSize, sizeof(int *), (__compar_fn_t) cmp);
 	int y = 0;
 	for (int i = INT_MIN; intervalsSize--; intervals++)
-		if (i <= **intervals)
-			i = (*intervalsColSize - 1)[*intervals];
-		else
-			++y;
+	{
+		if (i <= **intervals) {i = (*intervalsColSize - 1)[*intervals];}
+		else ++y;
+	}
 	return y;
 }
 #endif

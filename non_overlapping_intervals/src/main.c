@@ -144,5 +144,3 @@ int main(void)
 		ft_do_test(&cases[i]);
 	return (EXIT_SUCCESS);
 }
-
-
