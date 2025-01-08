@@ -82,6 +82,7 @@ gdb.txt
 /reorder_routes/reorder_routes
 /rotting_oranges/rotting_oranges
 /daily_temperatures/daily_temperatures
+/non_overlapping_intervals/non_overlapping_intervals
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
