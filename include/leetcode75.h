@@ -456,11 +456,8 @@ struct asciiTree
 
 int print_next;
 
-int MIN(int X, int Y)
-{ return ((X) < (Y)) ? (X) : (Y); }
-
-int MAX(int X, int Y)
-{ return ((X) > (Y)) ? (X) : (Y); }
+int MIN(int X, int Y) { return ((X) < (Y)) ? (X) : (Y); }
+int MAX(int X, int Y) { return ((X) > (Y)) ? (X) : (Y); }
 
 ASCIITree *build_ascii_tree_recursive(TreeNode *t)
 {
