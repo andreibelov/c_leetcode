@@ -86,6 +86,7 @@ gdb.txt
 /minimum_number_of_arrows/minimum_number_of_arrows
 /unique_paths/unique_paths
 /best_time_to_buy_stock/best_time_to_buy_stock
+/longest_common_subsequence/longest_common_subsequence
 
 # From https://stackoverflow.com/questions/15606955/:
 # If you want to list all the files currently being tracked:
